@@ -22,7 +22,7 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 
 export default function Navbar() {
   return (
-    <NavigationMenu className="sticky top-0 px-5 bg-transparent z-50">
+    <NavigationMenu className="sticky top-0 px-5 z-50 bg-opacity-50 bg-white/40 ">
       <span>
         <Link className="text-3xl font-bold text-primary hover:bg-yellow-50" href={'/'}>
           <Image src="/logo.png" width={50} height={40} alt="logo" className="hover:z-20"/>
