@@ -2,7 +2,8 @@ import AppointmentModel from "@/backend/models/appointment";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export default async function GET(req: NextRequest) {
+export default async function GET() {
+    console.log("GET /api/appointments");
 
     try {
         const appointments = AppointmentModel.find();
@@ -17,4 +18,6 @@ export default async function GET(req: NextRequest) {
         console.error(error);
         return NextResponse.json({ message: "Error fetching appointments" }, {status: 400});   
     }
+
+    
 }
