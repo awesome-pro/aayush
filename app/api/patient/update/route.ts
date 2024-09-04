@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import DoctorModel from "@/backend/models/doctor";
+import dbConnect from "@/lib/db-connect";
 
 
 export default async function PUT(req: NextRequest) {
@@ -10,7 +11,8 @@ export default async function PUT(req: NextRequest) {
 
 
     const { departments, hospital, roomNumber, qualifications, experience, consultationFee, availability, bio, rating } = await req.json();
-
+    await dbConnect();
+    
     try {
         const updatedDoctor = await DoctorModel.findByIdAndUpdate(
             id,
