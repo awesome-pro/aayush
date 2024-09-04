@@ -1,9 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import FAQ from "./faq";
-import { FormError } from "@/components/FormError";
-import { FormSuccess } from "@/components/FormSuccess";
 import { Button } from "@/components/ui/button";
 import { faArrowLeft, faArrowRight, faCheckCircle, faHandHolding, faHandHoldingHeart, faHospital, faUserDoctor, faVialVirus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,15 +12,6 @@ import { dummySkills } from "@/data";
 export default function Home() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [search, setSearch] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [loading, setLoading] = useState(true);
-
-
-
-  
-
   let displayedDoctors = dummySkills.slice(currentIndex, currentIndex + 3);
 
   const handlArrowClick = (direction : string) => {
@@ -110,14 +98,6 @@ export default function Home() {
                     <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl px-4 py-3 font-semibold">Book Doctor by Search</Button>
                     </Link>
                     </div>
-                    {/* <div className='flex justify-center items-center'>
-                    <Link href={"/consult-ai"}>
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl">Get Department by AI</Button>
-                    </Link>
-                    </div> */}
-                    {/* <div className='flex justify-center items-center'>
-                    <Button className='text-white bg-blue-500 bg-opacity-90 px-4 py-3 w-32 rounded-3xl hover:bg-blue-700'>Search</Button>
-                    </div> */}
                 </div> 
                 </div>
                 </div>
@@ -249,8 +229,6 @@ export default function Home() {
         </div>
       </div>
     </div>
-
-    <FAQ />
     </>
   );
 }

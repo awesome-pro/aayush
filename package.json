@@ -23,6 +23,7 @@
     "mongoose": "^8.6.1",
     "next": "14.2.7",
     "next-themes": "^0.3.0",
+    "next-videos": "^1.4.1",
     "react": "^18",
     "react-dom": "^18",
     "react-swiper": "^0.1.5",

@@ -35,4 +35,5 @@ const nextConfig = async () => {
         // your other Next.js config options here
     });
 };
+
 export default nextConfig;

@@ -11,10 +11,10 @@ import Image from "next/image"
 
       <div className="flex flex-col md:flex-row gap-4 justify-center px-8 py-4 items-center">
         <Image
-        src={"/images/doctor1.webp"}
+        src={"/images/faq.png"}
         alt="FAQ"
-        width={280}
-        height={280}
+        width={420}
+        height={320}
         className="rounded-3xl"
         />
           <Accordion type="single" collapsible className="w-full lg:max-w-[650px]">
