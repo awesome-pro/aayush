@@ -10,16 +10,35 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"
-import { useGetAppointments } from "./use-get-appointment";
-import { useCreateAppointment } from "./use-create-appointment";
-import Select from "@/components/select";
+import { useGetAppointments } from "../api/use-get-appointment";
+import { useCreateAppointment } from "../api/use-create-appointment";
+import { Select } from "@/components/ui/select";
 
   
   export const useSelectAccount = (): [() => JSX.Element, () => Promise<unknown>] => {
     const appointmentQuery = useGetAppointments();
-    const accountMutation = useCreateAccount();
-    const onCreateAccount = (name: string) => accountMutation.mutate({
-        name: name
+    const accountMutation = useCreateAppointment();
+    type status = "pending" | "processing" | "success" | "failed";
+    const onCreateAccount = (
+        patientId: string,
+        patientName: string,
+        doctorId: string,
+        doctorName: string,
+        startTime: Date,
+        endTime: Date,
+        department: string,
+        notes: string[],
+        status: status
+    ) => accountMutation.mutate({
+        patientId,
+        patientName,
+        doctorId,
+        doctorName,
+        startTime,
+        endTime,
+        department,
+        status,
+        notes
     })
 
     const accountOptions = (accountQuery.data ?? []).map((account) => ({

@@ -8,7 +8,7 @@ export const useCreateAppointment = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: async(appointmentData: typeof AppointmentModel) => {
+    mutationFn: async(appointmentData: Appointment) => {
       try {
         const db = mongoClient.db();
         const appointmentsCollection = db.collection("appointments");

@@ -1,118 +1,89 @@
 "use client";
 
-import { Appointment } from "@/backend/models/appointment";
+import React from 'react'
+import { columns } from './columns';
+import { DataTable } from '@/components/ui/data-table';
 import {
     Card,
     CardContent,
+    CardDescription,
+    CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card";
-import { Button } from '@/components/ui/button';
+  } from "@/components/ui/card"
+import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton';
-import { Plus } from 'lucide-react';
-import { DataTable } from "@/components/ui/data-table";
-import { columns } from "./columns";
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
-import { useNewAppointment } from "@/features/appointments/hookes/use-new-transactions";
+import { Loader2, Plus } from 'lucide-react'
 
-enum VARIANTS {
-    LIST = "LIST",
-    IMPORT = "IMPORT"
-  }
-  
-  const INITIAL_IMPORT_RESULTS = {
-    data: [],
-    errors: [],
-    meta: {}
-  };
-  
+import { useNewAppointment } from '@/features/appointments/hookes/use-new-appointment';
+import { useGetAppointments } from '@/features/appointments/api/use-get-appointment';
+import { useBulkDeleteAppointments } from '@/features/appointments/api/use-bulk-delete-appointment';
 
-function Appointments() {
-    const [appointments, setAppointments] = useState<Appointment[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
-    const [importResults, setImportResults] = useState(INITIAL_IMPORT_RESULTS)
+function CategoryPage() {
 
-    const onUpload = (results: typeof INITIAL_IMPORT_RESULTS) => {
-        console.log({ results })
-        setImportResults(results);
-        setVariant(VARIANTS.IMPORT);
-    }
+    const newcategory = useNewAppointment();
+    const categoriesQuery = useGetAppointments();
+    const deleteCategories = useBulkDeleteAppointments();
 
-    const onCancelImport = () => {
-        setImportResults(INITIAL_IMPORT_RESULTS);
-        setVariant(VARIANTS.LIST)
-    }
+    const categories = categoriesQuery.data || []
 
-    const newAppointment = useNewAppointment();
+    const isDisabled = categoriesQuery.isLoading || deleteCategories.isPending;
 
 
-    // Fetch appointments function
-    const fetchAppointments = useCallback(async () => {
-        try {
-            setLoading(true);
-            const response = await axios.get<Appointment[]>('/api/appointments');
-            setAppointments(response.data);
-        } catch (error) {
-            setError('Failed to fetch appointments');
-        } finally {
-            setLoading(false);
-        }
-    }, []); // Empty dependency array ensures this only runs once
-
-    useEffect(() => {
-        fetchAppointments();
-    }, [fetchAppointments]); // Dependency on fetchAppointments
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
-
-    return (
+    if(categoriesQuery.isLoading){
+      return (
         <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 -mt-24'>
+          <Card className='border-none drop-shadow-sm'>
+            <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
+                <Skeleton className='h-8 w-48'/>
+                <Skeleton className='w-48 h-8'/>
+            </CardHeader>
+            <CardContent className='lg:px-auto lg:mx-auto mt-10 '>
+              <div className='h-[500px] w-full flex flex-col items-start justify-start gap-4'>
+                <Skeleton className='h-8 w-1/2 px-5'/>
+                <Skeleton className='h-8 w-full px-5'/>
+                <Skeleton className='h-8 w-full px-5'/>
+                <Skeleton className='h-8 w-full px-5'/>
+              </div>
+            </CardContent>
+        </Card>
+        </div>
+      )
+    }
+
+  return (
+    <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 -mt-24'>
         <Card className='border-none drop-shadow-sm'>
-          <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
-            <CardTitle className='text-xl line-clamp-1'>
-              Appointment
-            </CardTitle>
-            <div className='flex gap-2 flex-col lg:flex-row items-center justify-center'>
-              <Button
-                className=' w-full lg:w-32'
-                size={'sm'}
-                onClick={newtransaction.onOpen}
-              >
+            <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
+                <CardTitle className='text-xl line-clamp-1'>
+                    Category Page
+                </CardTitle>
+                <Button 
+               className=' w-full lg:w-48' 
+               size={'sm'}
+               onClick={newcategory.onOpen}
+               >
                 <Plus size={16} className='mr-2' />
-                Add New
-              </Button>
-              <UploadButton onUpload={onUpload} />
-            </div>
-          </CardHeader>
-          <CardContent className='lg:px-auto lg:mx-auto -m-4'>
-            <p>
-              {transactions.length} transactions
-            </p>
-            <div className="container mx-0 py-10">
-              <DataTable
-                columns={columns}
-                data={transactions}
-                filterKey='payee'
+                    Add New
+               </Button>
+            </CardHeader>
+            <CardContent className='lg:px-auto lg:mx-auto -m-4'>
+              <div className="container mx-0 py-10">
+                <DataTable 
+                columns={columns} 
+                data={categories} 
+                filterKey='patientName'
                 onDelete={(row) => {
                   const ids = row.map((r) => r.original.id);
-                  deletetransactions.mutate({ ids });
+                  deleteCategories.mutate({ids});
                 }}
                 disabled={isDisabled}
-              />
-            </div>
-          </CardContent>
+                />
+              </div>
+            </CardContent>
         </Card>
-      </div>
-    );
+    </div>
+  )
 }
 
-export default Appointments;
+export default CategoryPage

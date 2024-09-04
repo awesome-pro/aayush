@@ -19,3 +19,11 @@ export function formatTimestamp(timestamp: string): string {
   // Return formatted string
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
+
+export function formatDateToInput(date: Date): string {
+  return date.toISOString().slice(0, 16);
+}
+
+export function parseDateFromInput(value: string): Date {
+  return new Date(value);
+}
