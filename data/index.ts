@@ -8,20 +8,20 @@ export interface NavLink{
 
 export const navLinks: NavLink[] = [
     {
+        title: "Home",
+        href: "/",
+    },
+    {
         title: "About",
         href: "/about",
     },
     {
-        title: "Pricing",
-        href: "/pricing",
+        title: "Privacy Policy",
+        href: "/privacy",
     },
     {
-        title: "Features",
-        href: "/features",
-    },
-    {
-        title: "Contact",
-        href: "/contact",
+        title: "Profile",
+        href: "/profile",
     }
 ]
 
