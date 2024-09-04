@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
-import DoctorModel from "@/backend/models/doctor";
+import AdminModel from "@/backend/models/admin";
 
 
 export default async function POST(req: NextRequest) {
@@ -10,7 +10,7 @@ export default async function POST(req: NextRequest) {
 
     const { departments, hospital, roomNumber, qualifications, experience, consultationFee, availability, bio, rating } = await req.json();
 
-    const newDoctor = new DoctorModel({
+    const newAdmin = new AdminModel({
         name: user?.fullName,
         email: user?.emailAddresses[0].emailAddress,
         phoneNumber: user?.phoneNumbers[0].phoneNumber, 
@@ -25,10 +25,10 @@ export default async function POST(req: NextRequest) {
         rating
     }); 
 
-    const response = await newDoctor.save();
+    const response = await newAdmin.save();
     if (response) {
-        return NextResponse.json({ message: "Doctor created successfully" }, {status: 200});
+        return NextResponse.json({ message: "Admin created successfully" }, {status: 200});
     }
 
-    return NextResponse.json({ message: "Doctor creation failed" }, {status: 400});
+    return NextResponse.json({ message: "Admin creation failed" }, {status: 400});
 }
