@@ -7,10 +7,9 @@ export interface Patient extends Document{
     phoneNumber?: number;
     age?: number;
     diseases?: string[];
-    //appointments?: Appointment[];
-    height: number;
-    weight: number;
-    bloodGroup: string;
+    height?: number;
+    weight?: number;
+    bloodGroup?: string;
     allergies?: string;
     currentMedications?: string;
     address?: string;
@@ -25,7 +24,6 @@ const PatientSchema = new Schema<Patient>(
         phoneNumber: { type: String, required: false },
         age: { type: Number, required: false },
         diseases: { type: String, required: false },
-        //appointments: { type: [String], required: false },
         height: { type: Number, required: false },
         weight: { type: Number, required: false },
         bloodGroup: { type: String, required: false },
