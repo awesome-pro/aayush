@@ -68,14 +68,14 @@ export default function Home() {
 
                  <div className='mt-3 text-xl text-gray-500 gap-4 flex-col flex' >
                 <p className='flex flex-wrap gap-3 font-semibold'>
-                Connect instantly with a 24x7 specialist or choose to video visit a particular doctor.
+                Connect instantly with a 24x7 specialist or choose to video visit a particular hospital.
                 </p>
             </div>
                 <br />
                 <div className='flex flex-col md:flex-row gap-5'>
                   <Link href='/consult'>
                     <Button className='border-2 rounded-3xl px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white w-52'>
-                      Consult Aarogya AI
+                      Consult AI Doctor
                     </Button>
                     </Link>
                 </div>
@@ -98,19 +98,19 @@ export default function Home() {
                     <div className='flex justify-center items-center'>
                     {/* <SearchBar value="Ex Doctor, Hospital" /> */}
                     <Link href={"/symptoms"}>
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl px-4 py-3 font-semibold">Book Doctor by Symptoms</Button>
+                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl px-4 py-3 font-semibold">Predict Disease by Symptoms</Button>
                     </Link>
                     </div>
                     <div className='flex justify-center items-center'>
                     {/* <SearchBar value="Ex Surgeon, Cardiologist" /> */}
                     <Link href={"/consult-ai"}>
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl px-4 py-3 font-semibold">Book Doctor by AI</Button>
+                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl px-4 py-3 font-semibold">Book Hospital by AI</Button>
                     </Link>
                     </div>
                     <div className='flex justify-center items-center'>
                     {/* <SearchBar value="Set Your location" /> */}
                     <Link href={"/find-doctor"}>
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl px-4 py-3 font-semibold">Book Doctor by Search</Button>
+                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-3xl px-4 py-3 font-semibold">Book Hospital by Search</Button>
                     </Link>
                     </div>
                 </div> 
