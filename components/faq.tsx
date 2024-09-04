@@ -15,7 +15,7 @@ import Image from "next/image"
         alt="FAQ"
         width={420}
         height={320}
-        className="rounded-3xl"
+        className="rounded-l-xl z-20 shadow-xl"
         />
           <Accordion type="single" collapsible className="w-full lg:max-w-[650px]">
             <AccordionItem value="item-1">
