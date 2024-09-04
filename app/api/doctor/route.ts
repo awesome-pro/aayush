@@ -2,10 +2,10 @@ import DepartmentModel from "@/backend/models/department";
 import { NextRequest, NextResponse } from "next/server";
 
 
-export async function GET(req: NextRequest) {
+export default async function GET(req: NextRequest) {
 
     try {
-        const departments = await DepartmentModel.find();
+        const departments = DepartmentModel.find();
 
         if (departments) {
             return NextResponse.json({ data: departments }, {status: 200});
