@@ -8,14 +8,6 @@ export interface NavLink{
 
 export const navLinks: NavLink[] = [
     {
-        title: "Home",
-        href: "/",
-    },
-    {
-        title: "OPD",
-        href: "/opd",
-    },
-    {
         title: "Medicines",
         href: "/medicines",
     },
@@ -24,9 +16,9 @@ export const navLinks: NavLink[] = [
         href: "/appointments",
     },
     {
-        title: "Beds",
-        href: "/beds",
-    }
+        title: "Admissions",
+        href: "/admissions",
+    },
 ]
 
 export interface FooterLink{

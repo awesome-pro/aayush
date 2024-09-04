@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <main className="min-h-screen w-screen">
+      <main className="min-h-screen w-full">
         <Navbar />
         {children}
         <Footer />

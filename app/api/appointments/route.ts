@@ -1,14 +1,16 @@
 import AppointmentModel from "@/backend/models/appointment";
 import { NextRequest, NextResponse } from "next/server";
+import dbConnect from "@/lib/db-connect";
 
 
-export default async function GET() {
-    console.log("GET /api/appointments");
-
+export async function GET() {
+    console.log("GET /api/appointments is called");
+    await dbConnect();
     try {
-        const appointments = AppointmentModel.find();
-
-        if (appointments) {
+        const appointments = await AppointmentModel.find();
+        console.log("Appointments found: ", appointments);
+        
+        if (appointments) {  
             return NextResponse.json({ data: appointments }, {status: 200});
         }
         
