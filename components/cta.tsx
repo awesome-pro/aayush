@@ -6,30 +6,6 @@ import React from 'react'
 function Cta() {
   return (
     <div>
-        <div className="right-side w-full md:w-1/3 p-8">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white flex items-center justify-center flex-col h-40 shadow-xl">
-          <FontAwesomeIcon icon={faHandHoldingHeart} className="text-4xl text-blue-400" />
-            <p className="text-center font-bold text-2xl p-2">5000+</p>
-            <p className="text-center font-semibold">Happy Patients</p>
-          </div>
-          <div className="bg-white flex items-center justify-center flex-col h-40 shadow-xl">
-          <FontAwesomeIcon icon={faHospital} className="text-4xl text-orange-600" />
-            <p className="text-center font-bold text-2xl p-2">5000+</p>
-            <p className="text-center font-semibold">Hospitals</p>
-          </div>
-          <div className="bg-white flex items-center justify-center flex-col h-40 shadow-xl">
-          <FontAwesomeIcon icon={faVialVirus} className="text-4xl text-yellow-500" />
-            <p className="text-center font-bold text-2xl p-2">5000+</p>
-            <p className="text-center font-semibold">Laboratories</p>
-          </div>
-          <div className="bg-white flex items-center justify-center flex-col h-40 shadow-xl">
-            <FontAwesomeIcon icon={faUserDoctor} className="text-4xl text-green-400" />
-            <p className="text-center font-bold text-2xl p-2">5000+</p>
-            <p className="text-center font-semibold">Expert Doctor</p>
-          </div>
-        </div>
-      </div>
       <div className="patient-caring-div flex flex-row items-center justify-around p-10 bg-blue-100 rounded-lg shadow-lg">
     <div className="images-container flex">
       <Image src="/images/about-1.png" alt="Patient" className="w-80 h-48 object-cover rounded-md border-4 border-white shadow-lg z-10 -mr-8 mt-32" width={200} height={200}/>
