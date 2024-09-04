@@ -8,6 +8,10 @@ export interface NavLink{
 
 export const navLinks: NavLink[] = [
     {
+        title: "Home",
+        href: "/",
+    },
+    {
         title: "OPD",
         href: "/opd",
     },

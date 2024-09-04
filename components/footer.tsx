@@ -1,40 +1,57 @@
-import React from 'react'
-import { FooterLink, footerLinks } from '@/data'
-import Link from 'next/link'
-import { Button } from './ui/button'
-import { ThemeToggle } from './theme-toggle'
-import { socialLinks, SocialLink } from '@/data'
-import Image from 'next/image'
+import React from 'react';
 
-
-function Footer() {
+const Footer = () => {
   return (
-    <footer className='bg-slate-100 dark:bg-gray-900 p-1 text-center flex flex-col items-center justify-between'>
-        <span className="bg-slate-100 dark:bg-gray-900 p-1 text-center flex gap-0 items-center justify-between w-full">
-            <p className='text-xs'> &copy; 2024 Aarogya Inc.</p>
-            <nav className="flex md:flex-row justify-center gap-0 md:gap-2 flex-col ">
-                {footerLinks.map((link: FooterLink) => (
-                    <Link href={link.href} key={link.title}>
-                        <Button variant={'link'} className='text-xs'>{link.title}</Button>
-                    </Link>
-                ))}
-            </nav>
-            
-            <div className='flex items-center justify-between gap-1'>
-                {socialLinks.map((link: SocialLink) => (
-                    
-                    <Link href={link.href} key={link.icon} className='p-2 rounded-3xl hover:bg-slate-100' target='_blank'>
-                        <Image src={link.icon} alt='image' width={20} height={20}/>
-                    </Link>
-                ))}
-            </div>
-        </span>
-        <span className='text-xs flex'>
-            Made with 💙 by <Link href={'https://abhinandan-v.vercel.app/'} target='_blank' className='hover:text-primary hover:underline ml-1'>Abhinandan</Link>
-                <ThemeToggle/>
-        </span>
-    </footer>
-  )
-}
+    <footer className="bg-gray-800 text-gray-200">
+      <div className="container mx-auto px-5 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <h2 className="text-blue-400 text-lg mb-4">Medical App</h2>
+            <p className="text-gray-400">
+              <strong>Phone:</strong> +1 232 2321 4543<br />
+              <strong>Email:</strong> info@medical.com
+            </p>
+          </div>
 
-export default Footer
+          <div>
+            <h2 className="text-lg text-gray-400 mb-4">Quick Links</h2>
+            <ul className="text-gray-400">
+              <li className="pb-2"><a href="#" className="hover:text-white">About Us</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Our Pricing</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Our Gallery</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Appointment</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-lg text-gray-400 mb-4">Specialties</h2>
+            <ul className="text-gray-400">
+              <li className="pb-2"><a href="#" className="hover:text-white">Orthology</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Neurology</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Dental Care</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Opthalmology</a></li>
+              <li className="pb-2"><a href="#" className="hover:text-white">Cardiology</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-lg text-gray-400 mb-4">Connect With Us</h2>
+            <div className="flex space-x-4">
+              <a href="#" className="text-white hover:bg-gray-300 rounded-full p-2"><i className="fa fa-twitter"></i></a>
+              <a href="#" className="text-white hover:bg-gray-300 rounded-full p-2"><i className="fa fa-instagram"></i></a>
+              <a href="#" className="text-white hover:bg-gray-300 rounded-full p-2"><i className="fa fa-facebook"></i></a>
+              <a href="#" className="text-white hover:bg-gray-300 rounded-full p-2"><i className="fa fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 border-t border-gray-700 pt-8">
+          <p className="text-center text-gray-400">Copyright <strong>Medical Application</strong>. All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
