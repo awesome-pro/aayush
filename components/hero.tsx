@@ -8,10 +8,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { dummySkills } from "@/data";
+import { dummyDoctors, latestNews, specialization } from "../components/data/doctors";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
 
+  const settings = {
+    dots: true,
+    infinite: true, // This enables the continuous loop
+    speed: 500,
+    slidesToShow: 3, // Number of slides to show at once
+    slidesToScroll: 1, // Number of slides to scroll at a time
+    autoplay: true, // Optional: Enable automatic sliding
+    autoplaySpeed: 2000, // Optional: Time between each slide in milliseconds
+  };
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex ] = useState(5);
   let displayedDoctors = dummySkills.slice(currentIndex, currentIndex + 3);
 
   const handlArrowClick = (direction : string) => {
@@ -111,68 +126,70 @@ export default function Home() {
       </div>
       </div>
 
-      <div className="specialization-box flex flex-col bg-blue-50">
-        <div className="flex items-center justify-center">
-      <h2 className="text-3xl font-bold mb-7 mt-10 text-blue-900">Find By Specialisation</h2>
+      <div className="specialization-box flex flex-col items-center justify-center bg-blue-50">
+  <div className="flex items-center justify-center">
+    <h2 className="text-4xl font-bold mb-7 mt-10 text-blue-900">Find By Hospital Specialization</h2>
+  </div>
+  <div className="flex flex-wrap gap-7 justify-center items-center max-w-screen-xl my-2">
+    {specialization.slice(0, index).map((specialization, index) => (
+      <div key={index} className="flex flex-col items-center">
+        <img
+          src={specialization.image}
+          alt={specialization.name}
+          className="w-48 h-48 object-cover rounded-full"
+        />
+        <h3 className="text-xl font-semibold mt-4 text-blue-900">{specialization.name}</h3>
       </div>
-      <div className="flex flex-wrap gap-7 justify-center items-center max-w-screen-2xl my-2">
+    ))}
+  </div>
+  <div className="flex items-center justify-center m-5">
+    <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" onClick={() => setIndex(specialization.length)}>View All</button>
+  </div>
+</div>
 
-      </div>
-      <div className="flex items-center justify-center m-5">
-        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">View All</button>
-      </div>
-    </div> 
 
-    <div className="flex items-center justify-center gap-5 pt-10 pb-4 w-full">
-      <div className="max-w-screen-lg p-4 bg-white">
+    <div className="flex items-center justify-center gap-5 pt-10 pb-10 w-full">
+      <div className="max-w-screen-xl p-4 bg-white">
       <div className="flex justify-center items-center p-5">
       </div>
       <div className="flex items-center justify-center">
       <h2 className="text-3xl font-bold mb-4 mt-10 text-blue-900">Our Medical Specialist</h2>
       </div>
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ">
-     {displayedDoctors.map((skill) => (
-      // eslint-disable-next-line react/jsx-key
-      <div className="flex flex-col justify-center items-center">
-        <div key={skill.id} className="border h-96 w-80 border-gray-300 p-4 rounded-t-full bg-blue-200 flex flex-col justify-center items-center ">
-          <img src={skill.image} alt='/' className='h-1/2 w-1/2' />
-        </div>
-        <h1 className="text-gray-600">Hiuohpbini</h1>
-        <h2 className="text-gray-400">yfugiviy</h2>
+     {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 "> */}
+      <Slider {...settings}>
+      {dummyDoctors.map((doctor) => (
+        <div key={doctor.id} className="flex flex-col justify-center items-center">
+          <div className="border h-60 w-80 border-gray-300 p-4 rounded-sm bg-blue-50 flex flex-col justify-center items-center">
+            <img src={doctor.image} alt={doctor.name} className="h-full w-full object-cover" />
+          </div>
+          <h1 className="text-gray-600">{doctor.name}</h1>
+          <h2 className="text-gray-400">{doctor.specialty}</h2>
         </div>
       ))}
-      </div>
-      <div className="flex items-center justify-center gap-5 pb-4">
-      <FontAwesomeIcon icon={faArrowLeft} onClick={() => handlArrowClick("left")} className="text-gray-600 p-3 text-lg hover:text-black rounded-full bg-white" />
-      <FontAwesomeIcon icon={faArrowRight} onClick={() => handlArrowClick("right")} className="text-gray-600 p-3 text-lg hover:text-black rounded-full bg-white" />
-      </div>
+  </Slider>
+      {/* </div> */}
       </div>
       </div>
 
     <div className="flex items-center justify-center gap-5 pt-4 pb-4 w-full">
-      <div className="max-w-screen-lg p-4 bg-white">
+      <div className="max-w-screen-xl p-4 bg-white">
       <div className="flex justify-center items-center p-5">
       </div>
       <div className="flex items-center justify-center flex-col">
       <h2 className="text-base font-bold mb-4 mt-4 text-blue-400">Blog & News</h2>
       <h2 className="text-3xl font-bold mb-4 text-blue-900">Read Our Latest News</h2>
       </div>
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 ">
-     {displayedDoctors.map((skill) => (
-      // eslint-disable-next-line react/jsx-key
-      <div className="flex flex-col justify-center items-center">
-        <div key={skill.id} className="border h-60 w-80 border-gray-300 p-4 rounded-sm bg-blue-200 flex flex-col justify-center items-center ">
-          <img src={skill.image} alt='/' className='h-1/2 w-1/2' />
-        </div>
-        <h1 className="text-gray-600">Hiuohpbini</h1>
-        <h2 className="text-gray-400">yfugiviy</h2>
-        </div>
-      ))}
-      </div>
-      <div className="flex items-center justify-center gap-5 pb-4">
-      <FontAwesomeIcon icon={faArrowLeft} onClick={() => handlArrowClick2("left")} className="text-gray-600 p-3 text-lg hover:text-black rounded-full bg-white" />
-      <FontAwesomeIcon icon={faArrowRight} onClick={() => handlArrowClick2("right")} className="text-gray-600 p-3 text-lg hover:text-black rounded-full bg-white" />
-      </div>
+      <Slider {...settings}>
+          {latestNews.map((news) => (
+            <div key={news.id} className="flex flex-col justify-center items-center">
+              <div className="border h-60 w-80 border-gray-300 p-4 rounded-sm bg-yellow-50 flex flex-col justify-center items-center">
+                <img src={news.image} alt={news.title} className="h-full w-full object-cover" />
+              </div>
+              <h1 className="text-gray-600">{news.title}</h1>
+              <h2 className="text-gray-400">{news.summary}</h2>
+            </div>
+          ))}
+        </Slider>
       </div>
       </div>
 
