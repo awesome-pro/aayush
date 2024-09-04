@@ -1,20 +1,24 @@
-import DepartmentModel from "@/backend/models/department";
 import { NextRequest, NextResponse } from "next/server";
+import dbConnect from "@/lib/db-connect";
+import DoctorModel from "@/backend/models/doctor";
 
 
-export default async function GET(req: NextRequest) {
+export  async function GET(req: NextRequest) {
+
+    await dbConnect();
 
     try {
-        const departments = DepartmentModel.find();
+        const doctors = DoctorModel.find();
 
-        if (departments) {
-            return NextResponse.json({ data: departments }, {status: 200});
+        if (doctors) {
+            console.log(doctors);
+            return NextResponse.json({ message: "Doctors fetched successfully " }, {status: 200});
         }
         
-        return NextResponse.json({ message: "No departments found" }, {status: 404});
+        return NextResponse.json({ message: "No doctors found" }, {status: 404});
 
     } catch (error) {
         console.error(error);
-        return NextResponse.json({ message: "Error fetching departments" }, {status: 400});   
+        return NextResponse.json({ message: "Error fetching doctors" }, {status: 400});   
     }
 }
