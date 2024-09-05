@@ -61,15 +61,21 @@ function AppointmentPage() {
                onClick={newAppointment.onOpen}
                >
                 <Plus size={16} className='mr-2' />
-                    Add New
+                    Add New 
                </Button>
             </CardHeader>
-            <CardContent className='lg:px-auto lg:mx-auto -m-4'>
+            <CardContent className='lg:px-auto lg:mx-auto'>
               <div className="container mx-0 py-10">
-                <Skeleton />
-                <Skeleton />
-                <Skeleton />
-                <Skeleton />
+                <Skeleton className='w-[100px]'/>
+                <Skeleton className='w-[100px]'/>
+                <Skeleton className='w-[100px]'/>
+                <Skeleton className='w-[100px]'/>
+              </div>
+              <div className="container mx-0 py-10">
+                <Skeleton className='w-[100px]' />
+                <Skeleton className='w-[100px]' />
+                <Skeleton className='w-[100px]'/>
+                <Skeleton className='w-[100px]' />
               </div>
             </CardContent>
           </Card>

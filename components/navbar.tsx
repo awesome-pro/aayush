@@ -29,7 +29,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-opacity-80 bg-white/60 w-full shadow-md backdrop:blur-md">
+    <nav className="sticky top-0 z-50 bg-white/80 bg-opacity-50 backdrop-blur-2xlw-full shadow-md px-5">
       <div className="flex justify-between items-center ">
         {/* Logo */}
         <Link className="flex items-center" href={'/'}>

@@ -46,31 +46,9 @@ function NewCategorySheet() {
        }
     }
 
-  if(loading) {
-    return (
-        <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 '>
-          <Card className='border-none drop-shadow-sm'>
-            <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
-                <CardTitle className='text-xl line-clamp-1'>
-                    Appointment Page
-                </CardTitle>
-              <Button
-               className=' w-full lg:w-48' 
-               size={'sm'}
-            >
-                <Loader2 className='animate-spin' />
-            </Button>
-            </CardHeader>
-            <CardContent>
-                <Skeleton className='h-96' />
-            </CardContent>
-          </Card>
-        </div>
-      );
-  }
 
   return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
+    <Sheet open={isOpen || loading} onOpenChange={onClose}>
         <SheetContent className='bg-white w-full overflow-scroll no-scrollbar'>
             <SheetHeader>
             <SheetTitle>New Appointment</SheetTitle>
@@ -80,7 +58,7 @@ function NewCategorySheet() {
             </SheetHeader>
             <AppointmentForm
             onSubmit={onSubmit}
-            disabled={false}
+            disabled={loading}
             defaultValues={{
                 _id: "12",
                 patientId: "1234",

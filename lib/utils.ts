@@ -21,9 +21,14 @@ export function formatTimestamp(timestamp: string): string {
 }
 
 export function formatDateToInput(date: Date): string {
-  return date.toISOString().slice(0, 16);
+  if (!date) return ''; // Handle undefined or null date values
+  return new Date(date).toISOString().slice(0, 16); // 'YYYY-MM-DDTHH:MM'
 }
 
 export function parseDateFromInput(value: string): Date {
-  return new Date(value);
+  const date = new Date(value);
+  if (isNaN(date.getTime())) {
+    return new Date(); // Return current date if invalid
+  }
+  return date;
 }

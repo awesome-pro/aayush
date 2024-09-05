@@ -141,7 +141,7 @@ function AppointmentForm(
                     </FormItem>
                 )}
                 />
-                
+
                <FormField
                  name='status'
                  control={form.control}
@@ -183,22 +183,20 @@ function AppointmentForm(
                 <FormField
                 name='startTime'
                 control={form.control}
-                render={({field}) => (
+                render={({ field }) => (
                     <FormItem>
-                        <FormLabel>
-                          Start Time
-                        </FormLabel>
-                        <FormControl>
+                    <FormLabel>Start Time</FormLabel>
+                    <FormControl>
                         <Input
-                            disabled={disabled}
-                            type='datetime-local'
-                            value={formatDateToInput(field.value)}
-                            onChange={(e) => field.onChange(parseDateFromInput(e.target.value))}
-                            onBlur={field.onBlur}
-                            name={field.name}
-                            ref={field.ref}
+                        disabled={disabled}
+                        type='datetime-local'
+                        value={field.value ? formatDateToInput(field.value) : ''}
+                        onChange={(e) => field.onChange(parseDateFromInput(e.target.value))}
+                        onBlur={field.onBlur}
+                        name={field.name}
+                        ref={field.ref}
                         />
-                        </FormControl>
+                    </FormControl>
                     </FormItem>
                 )}
                 />
@@ -226,7 +224,7 @@ function AppointmentForm(
                 )}
                 />
                 <Button 
-                className='w-full bg-blue-600 text-white hover:bg-blue-700' 
+                className='w-full' 
                 disabled={disabled}
                 type='submit'
                 onClick={form.handleSubmit(handleSubmit)}
