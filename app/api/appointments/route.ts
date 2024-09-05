@@ -1,34 +1,21 @@
 import AppointmentModel from "@/backend/models/appointment";
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/db-connect";
-import { useSearchParams } from "next/navigation";
 
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     console.log("GET /api/appointments is called");
-    const params = useSearchParams();
-    const from = params.get("from") || ""
-    const to = params.get("to") || ""
+    const searchParams = new URLSearchParams(request.url);
 
     
     await dbConnect();
     try {
-        const appointments = await AppointmentModel.find(
-            {
-                startTime: {
-                    $lte: new Date(to)
-                },
-                endTime: {
-                    $gte: new Date(from)
-                }
-            }
-        );
-        console.log("Appointments found: ", appointments);
-        
-        if (appointments) {  
-            return NextResponse.json({ data: appointments }, {status: 200});
+        const appointments = await AppointmentModel.find();
+
+        if (appointments) {
+            console.log("Appointments found: ", appointments);
+            return NextResponse.json({ data: appointments, message: "data" }, {status: 200});
         }
-        
         return NextResponse.json({ message: "No appointments found" }, {status: 404});
 
     } catch (error) {

@@ -23,6 +23,20 @@ import Actions from "./actions"
 
 export const columns: ColumnDef<Appointment>[] = [
   {
+    accessorKey: "_id",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          ID
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
+  },
+  {
     accessorKey: "status",
     header: ({ column }) => {
       return (
@@ -125,9 +139,5 @@ export const columns: ColumnDef<Appointment>[] = [
       
       return <div className="text-right font-medium">{formatted}</div>
     },
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => <Actions id={row.original.doctorId}/>
   },
 ]

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 
 export type status = "pending" | "processing" | "success" | "failed";
 export interface Appointment{
+    _id: mongoose.Types.ObjectId;
     patientId: string;
     patientName: string;
     doctorId: string;

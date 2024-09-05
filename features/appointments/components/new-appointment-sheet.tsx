@@ -48,7 +48,7 @@ function NewCategorySheet() {
     
 
   return (
-    <Sheet open={isOpen} onOpenChange={onClose}>
+    <Sheet open={true}>
         
         <SheetContent className='bg-white '>
             <SheetHeader>

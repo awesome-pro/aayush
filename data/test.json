@@ -1,0 +1,63 @@
+[
+    {
+      "_id": "64f6b72a9bcd5c0012345678",
+      "patientId": "P123",
+      "patientName": "John Doe",
+      "doctorId": "D456",
+      "doctorName": "Dr. Smith",
+      "department": "Cardiology",
+      "startTime": "2024-09-10T09:00:00.000Z",
+      "endTime": "2024-09-10T09:30:00.000Z",
+      "status": "pending",
+      "notes": ["Discuss heart health", "Follow-up in 3 months"]
+    },
+    {
+      "_id": "64f6b72a9bcd5c0012345679",
+      "patientId": "P124",
+      "patientName": "Jane Roe",
+      "doctorId": "D457",
+      "doctorName": "Dr. Emily Clark",
+      "department": "Dermatology",
+      "startTime": "2024-09-11T11:00:00.000Z",
+      "endTime": "2024-09-11T11:45:00.000Z",
+      "status": "processing",
+      "notes": ["Check for skin rash"]
+    },
+    {
+      "_id": "64f6b72a9bcd5c0012345680",
+      "patientId": "P125",
+      "patientName": "Robert Smith",
+      "doctorId": "D458",
+      "doctorName": "Dr. Michael Johnson",
+      "department": "Orthopedics",
+      "startTime": "2024-09-12T10:30:00.000Z",
+      "endTime": "2024-09-12T11:00:00.000Z",
+      "status": "success",
+      "notes": ["Knee pain treatment", "Prescribed medication"]
+    },
+    {
+      "_id": "64f6b72a9bcd5c0012345681",
+      "patientId": "P126",
+      "patientName": "Alice Cooper",
+      "doctorId": "D459",
+      "doctorName": "Dr. Anne Lee",
+      "department": "Neurology",
+      "startTime": "2024-09-13T08:00:00.000Z",
+      "endTime": "2024-09-13T08:45:00.000Z",
+      "status": "failed",
+      "notes": ["Discuss migraines", "Reschedule due to cancellation"]
+    },
+    {
+      "_id": "64f6b72a9bcd5c0012345682",
+      "patientId": "P127",
+      "patientName": "Mark Johnson",
+      "doctorId": "D460",
+      "doctorName": "Dr. Grace Wilson",
+      "department": "Pediatrics",
+      "startTime": "2024-09-14T12:00:00.000Z",
+      "endTime": "2024-09-14T12:30:00.000Z",
+      "status": "pending",
+      "notes": ["Vaccination"]
+    }
+  ]
+  

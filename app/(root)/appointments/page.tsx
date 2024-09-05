@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, { useCallback } from 'react'
 import { columns } from './columns';
 import { DataTable } from '@/components/ui/data-table';
 import {
@@ -16,52 +16,46 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Loader2, Plus } from 'lucide-react'
 
 import { useNewAppointment } from '@/features/appointments/hookes/use-new-appointment';
-import { useGetAppointments } from '@/features/appointments/api/use-get-appointment';
-import { useBulkDeleteAppointments } from '@/features/appointments/api/use-bulk-delete-appointment';
+import { Appointment } from '@/backend/models/appointment';
+import axios from 'axios';
 
-function CategoryPage() {
+function AppointmentPage() {
 
-    const newcategory = useNewAppointment();
-    const categoriesQuery = useGetAppointments();
-    const deleteCategories = useBulkDeleteAppointments();
+    const newCategory = useNewAppointment();
 
-    const categories = categoriesQuery.data || []
-
-    const isDisabled = categoriesQuery.isLoading || deleteCategories.isPending;
+    const [appointment, setAppointment] = React.useState<Appointment[]>([]); 
+    const [loading, setLoading] = React.useState<boolean>(true);
 
 
-    if(categoriesQuery.isLoading){
-      return (
-        <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 -mt-24'>
-          <Card className='border-none drop-shadow-sm'>
-            <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
-                <Skeleton className='h-8 w-48'/>
-                <Skeleton className='w-48 h-8'/>
-            </CardHeader>
-            <CardContent className='lg:px-auto lg:mx-auto mt-10 '>
-              <div className='h-[500px] w-full flex flex-col items-start justify-start gap-4'>
-                <Skeleton className='h-8 w-1/2 px-5'/>
-                <Skeleton className='h-8 w-full px-5'/>
-                <Skeleton className='h-8 w-full px-5'/>
-                <Skeleton className='h-8 w-full px-5'/>
-              </div>
-            </CardContent>
-        </Card>
-        </div>
-      )
+    const fetchAppointment = useCallback(async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/appointments');
+        const data = await response.data.data;
+        console.log('Data: ', data, response);
+        setAppointment(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching data: ', error);
+      }
     }
+    , []);
+
+    React.useEffect(() => {
+      fetchAppointment();
+    }, [fetchAppointment]);
+
 
   return (
-    <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 -mt-24'>
+    <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 '>
         <Card className='border-none drop-shadow-sm'>
             <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
                 <CardTitle className='text-xl line-clamp-1'>
-                    Category Page
+                    Appointment Page
                 </CardTitle>
-                <Button 
+              <Button 
                className=' w-full lg:w-48' 
                size={'sm'}
-               onClick={newcategory.onOpen}
+               onClick={newCategory.onOpen}
                >
                 <Plus size={16} className='mr-2' />
                     Add New
@@ -71,13 +65,12 @@ function CategoryPage() {
               <div className="container mx-0 py-10">
                 <DataTable 
                 columns={columns} 
-                data={categories} 
+                data={appointment} 
                 filterKey='patientName'
-                onDelete={(row) => {
-                  const ids = row.map((r) => r.original.id);
-                  deleteCategories.mutate({ids});
+                onDelete={() => {
+                  console.log('Delete')
                 }}
-                disabled={isDisabled}
+                disabled={loading}
                 />
               </div>
             </CardContent>
@@ -86,4 +79,4 @@ function CategoryPage() {
   )
 }
 
-export default CategoryPage
+export default AppointmentPage

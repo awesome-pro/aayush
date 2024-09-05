@@ -1,8 +1,9 @@
+"use server";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { MongoClient } from "mongodb";
 import AppointmentModel, { Appointment } from "@/backend/models/appointment";
-
-const mongoClient = new MongoClient(process.env.MONGODB_URI as string);
+import { dbConnect } from "@/lib/db";
 
 export const useCreateAppointment = () => {
   const queryClient = useQueryClient();
@@ -10,6 +11,8 @@ export const useCreateAppointment = () => {
   const mutation = useMutation({
     mutationFn: async(appointmentData: Appointment) => {
       try {
+
+        const { client, db: database } = await dbConnect("appointments");
         const db = mongoClient.db();
         const appointmentsCollection = db.collection("appointments");
 
