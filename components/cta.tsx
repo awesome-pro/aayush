@@ -1,29 +1,64 @@
-import { faCheckCircle, faHandHoldingHeart, faHospital, faUserDoctor, faVialVirus } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from 'next/image'
-import React from 'react'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
+import React from 'react';
 
 function Cta() {
   return (
-    <div>
-      <div className="patient-caring-div flex flex-row items-center justify-around p-10 bg-blue-100 rounded-lg shadow-lg">
-    <div className="images-container flex">
-      <Image src="/images/about-1.png" alt="Patient" className="w-80 h-48 object-cover rounded-md border-4 border-white shadow-lg z-10 -mr-8 mt-32" width={200} height={200}/>
-      <Image src="/images/about-2.png" alt="patient" className="w-80 h-48 object-cover rounded-md border-4 border-white shadow-lg -ml-8" width={200} height={200}/>
+    <div className="bg-blue-50 py-12 px-6 lg:px-16 rounded-lg shadow-lg">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+        
+        {/* Image Container */}
+        <div className="relative flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-4 lg:gap-8">
+          <div className="relative flex-shrink-0">
+            <Image
+              src="/images/about-1.png"
+              alt="Patient"
+              className="w-60 h-40 sm:w-80 sm:h-48 object-cover rounded-md border-4 border-white shadow-lg"
+              width={320}
+              height={180}
+            />
+          </div>
+          <div className="relative flex-shrink-0">
+            <Image
+              src="/images/about-2.png"
+              alt="Patient"
+              className="w-60 h-40 sm:w-80 sm:h-48 object-cover rounded-md border-4 border-white shadow-lg md:hidden"
+              width={320}
+              height={180}
+            />
+          </div>
+        </div>
+
+        {/* Text Container */}
+        <div className="w-full lg:w-2/3 text-center lg:text-left">
+          <p className="text-blue-400 font-bold text-sm lg:text-base mb-4">
+            HELPING PATIENTS FROM AROUND THE GLOBE!
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 tracking-wide">
+            Patient <span className="text-blue-400">Caring</span>
+          </h2>
+          <p className="text-gray-600 mb-6 text-sm sm:text-base">
+            Our goal is to deliver quality care in a courteous, respectful, and compassionate manner. We hope you will allow us to care for you and strive to be your first and best choice for healthcare.
+          </p>
+          <ul className="list-none space-y-4 text-blue-950 font-semibold text-sm sm:text-base">
+            <li className="flex items-center">
+              <FontAwesomeIcon icon={faCheckCircle} className="text-blue-400 text-lg mr-2" />
+              Stay Updated About Your Health
+            </li>
+            <li className="flex items-center">
+              <FontAwesomeIcon icon={faCheckCircle} className="text-blue-400 text-lg mr-2" />
+              Check Your Results Online
+            </li>
+            <li className="flex items-center">
+              <FontAwesomeIcon icon={faCheckCircle} className="text-blue-400 text-lg mr-2" />
+              Manage Your Appointments
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div className="text-container ml-4 w-1/3">
-    <p className="text-blue-400 font-bold mb-2">HELPING PATIENTS FROM AROUND THE GLOBE!!</p>
-      <h2 className="text-4xl font-extrabold mb-2 tracking-wide">Patient <span className="text-blue-400">Caring</span></h2>
-      <p className="text-gray-500 mb-2 text-base">Our goal is to deliver quality of care in a courteous, respectful, and compassionate manner.We hope you will allow us to care for you and strive to be the first and best choice for healthcare.</p>
-      <ul className="list-disc flex flex-col gap-y-4 text-blue-950 font-semibold text-lg">
-        <div><FontAwesomeIcon icon={faCheckCircle} className="text-blue-400 text-lg" /> Stay Updated About Your Health</div>
-        <div><FontAwesomeIcon icon={faCheckCircle} className="text-blue-400 text-lg"  /> Check Your Results Online</div>
-        <div><FontAwesomeIcon icon={faCheckCircle} className="text-blue-400 text-lg"  /> Manage Your Appointments</div>
-      </ul>
-    </div>
-  </div>
-    </div>
-  )
+  );
 }
 
-export default Cta
+export default Cta;

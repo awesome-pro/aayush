@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
@@ -18,36 +17,83 @@ import Image from "next/image"
 import { navLinks } from "@/data"
 import { Button } from "./ui/button"
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
-
+import { useState } from "react"
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
   return (
-    <NavigationMenu className="sticky top-0 px-5 z-50 bg-opacity-50 bg-white/40 w-screen">
-      <span>
-        <Link className="text-3xl font-bold text-primary hover:bg-yellow-50" href={'/'}>
+    <nav className="sticky top-0 z-50 bg-opacity-80 bg-white/60 w-full shadow-md">
+      <div className="flex justify-between items-center px-5 py-3">
+        {/* Logo */}
+        <Link className="flex items-center" href={'/'}>
           <Image src="/logo.png" width={50} height={40} alt="logo" className="hover:z-20"/>
+          <span className="text-3xl font-bold text-primary hover:bg-yellow-50 ml-2">MyBrand</span>
         </Link>
-      </span>
-      <span className="flex gap-3 py-2 px-1 text-xs ">
-        {navLinks.map((link) => (
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-3">
+          {navLinks.map((link) => (
             <Link href={link.href} key={link.href}>
               <Button variant="ghost" size={'sm'}>
                 {link.title}
               </Button>
             </Link>
-        ))}
-      </span>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-      <SignedOut>
-        <Link href="/sign-in">
-          <Button size="sm">
-            Get Started
-          </Button>
-        </Link>
-      </SignedOut>
-    </NavigationMenu>
+          ))}
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden">
+          <button onClick={toggleMenu} className="text-2xl">
+            {menuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+          </button>
+        </div>
+
+        {/* User Section */}
+        <div className="hidden md:flex items-center gap-4">
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Link href="/sign-in">
+              <Button size="sm">
+                Get Started
+              </Button>
+            </Link>
+          </SignedOut>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden flex flex-col gap-3 p-5 bg-white border-t">
+          {navLinks.map((link) => (
+            <Link href={link.href} key={link.href}>
+              <Button variant="ghost" size={'sm'} className="w-full text-left">
+                {link.title}
+              </Button>
+            </Link>
+          ))}
+          <div className="mt-3">
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+            <SignedOut>
+              <Link href="/sign-in">
+                <Button size="sm" className="w-full">
+                  Get Started
+                </Button>
+              </Link>
+            </SignedOut>
+          </div>
+        </div>
+      )}
+    </nav>
   )
 }
 
