@@ -1,0 +1,48 @@
+[
+    {
+      "_id": "64f3f10a90bcd00000000006",
+      "patientID": "P123456",
+      "departmentID": "D001",
+      "bedNumber": 10,
+      "assignedDoctorID": "D98765",
+      "assignedDoctorName": "Dr. John Smith",
+      "admissionTime": "2024-09-01T10:00:00.000Z"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000007",
+      "patientID": "P123457",
+      "departmentID": "D002",
+      "bedNumber": 12,
+      "assignedDoctorID": "D98766",
+      "assignedDoctorName": "Dr. Jane Doe",
+      "admissionTime": "2024-09-03T09:30:00.000Z",
+      "dischargeTime": "2024-09-05T14:00:00.000Z"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000008",
+      "patientID": "P123458",
+      "departmentID": "D003",
+      "bedNumber": 8,
+      "assignedDoctorID": "D98767",
+      "assignedDoctorName": "Dr. Emily Clark",
+      "admissionTime": "2024-09-02T15:45:00.000Z"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000009",
+      "patientID": "P123459",
+      "departmentID": "D004",
+      "bedNumber": 5,
+      "admissionTime": "2024-09-04T08:15:00.000Z",
+      "dischargeTime": "2024-09-06T10:30:00.000Z"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000010",
+      "patientID": "P123460",
+      "departmentID": "D005",
+      "bedNumber": 3,
+      "assignedDoctorID": "D98768",
+      "assignedDoctorName": "Dr. Michael Johnson",
+      "admissionTime": "2024-09-05T11:00:00.000Z"
+    }
+  ]
+  

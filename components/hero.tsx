@@ -49,32 +49,26 @@ export default function Home() {
           {/* Text Section */}
           <div className='lg:w-1/2 text-center lg:text-left'>
             <h1 className='bg-cyan-900 inline-block text-transparent bg-clip-text text-2xl md:text-4xl font-semibold tracking-wide mb-4'>
-              Skip the travel! Take Online
+              Welcome to <span className="text-blue-400">Aarogya</span>
             </h1>
-            <h1 className='bg-cyan-900 inline-block text-transparent bg-clip-text text-5xl md:text-6xl font-bold tracking-normal mb-6'>
-              Doctor <span className="text-blue-400">Consultation</span>
+            <h1 className='bg-cyan-900 inline-block text-transparent bg-clip-text text-3xl md:text-5xl font-bold tracking-normal mb-6'>
+              Your Health is Our Priority
             </h1>
             <p className='text-xl text-gray-600 mb-6'>
               Connect instantly with a 24x7 specialist or choose to video visit a particular hospital.
             </p>
             
             {/* Buttons Section */}
-            <div className="flex flex-col lg:flex-row justify-center lg:justify-start gap-4">
-              <Link href='/predict'>
+            <div className="flex flex-col lg:flex-row justify-center lg:justify-start gap-4 lg:mt-10">
+              <Link href='/appointments'>
                 <Button className='bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3'>
-                  Predict Disease by Symptoms
+                  Manage OPD
                 </Button>
               </Link>
 
-              <Link href='/consult'>
-                <Button className='bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3'>
-                  Consult AI Doctor
-                </Button>
-              </Link>
-
-              <Link href='/chat'>
-                <Button className='bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3'>
-                  Book Doctor
+              <Link href='/services'>
+                <Button className='rounded-3xl bg-primary/5 min-w-48' variant={'ghost'}>
+                  All Services
                 </Button>
               </Link>
             </div>

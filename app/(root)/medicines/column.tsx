@@ -82,51 +82,31 @@ export const columns: ColumnDef<Medicine>[] = [
     },
   },
   {
-    accessorKey: "doctorName",
+    accessorKey: "description",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Doctor Name
+          Description
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
   },
   {
-    accessorKey: "department",
+    accessorKey: "manufacturer",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Department
+          Manufacturer
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       )
     },
-  },
-  {
-    accessorKey: "startTime",
-    header: () => <div className="">Start Time</div>,
-    cell: ({ row, column }) => {
-      const startTime = String(row.getValue("startTime"))
-      const formatted = formatTimestamp(startTime);
-
-      return <div className="text-right font-medium">{formatted}</div>
-    },
-  },
-  {
-    accessorKey: "endTime",
-    header: () => <div className="">End Time</div>,
-    cell: ({ row }) => {
-      const endTime = String(row.getValue("endTime"))
-      const formatted = formatTimestamp(endTime);
-      
-      return <div className="text-right font-medium">{formatted}</div>
-    },
-  },
+  }
 ]

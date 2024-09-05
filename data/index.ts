@@ -1,4 +1,5 @@
 import React from "react";
+import { ServiceCardProps } from "@/components/service-card";
 
 export interface NavLink{
     title: string;
@@ -136,3 +137,50 @@ export const dummySkills = [
       image: "https://s3-alpha-sig.figma.com/img/6f24/e1db/3aec5da26ceba574fbcd4af774a9fcce?Expires=1717372800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kTi27BPeq2xvhhXBml-z2f3l9IbUrzKuosbTL2FYh~rp-zKb9GPorePukRaj6xa2NLJD2-Be3U-pH2oc5a3D~cWeTWo1-aGWcGp~~j2o3BrpalDEC9NMi9n3q~mnLBoCOBaVWO904hEIP7soYSjqfzfRO3tUVZsXOfsrHePoFAksRvoyb~08GjhGbW3Q2TxcrNx8YKtIyPyzOdiCJe90vo6iRHc8~fyyPaj07F4sweBH6ZUdgBUT958Yo5G4iYAuy9boGBEyiPkwR4EiqPdrWhPoDajOzdGTFAlJbZkkS~yHhq7hlsw-JG8lTTFhF7I6mxGo5ooX8UNRj1LAftVSzQ__",
     },
   ];
+
+export const servisesList: ServiceCardProps[] = [
+    {
+        title: "Medicines",
+        description: "Medicine Description",
+        href: "/medicines",
+        image: "/services/medicines.png",
+    },
+    {
+        title: "Appointments",
+        description: "Appointments Description",
+        href: "/appointments",
+        image: "/services/appointment.png",
+    },
+    {
+        title: "Admissions",
+        description: "Admissions Description",
+        href: "/admissions",
+        image: "/services/admissions.png"
+    },
+    {
+        title: "Departments",
+        description: "Departments Description",
+        href: "/departments",
+        image: "/services/departments.png",
+    },
+    {
+        title: "Reports",
+        description: "Reports Description",
+        href: "/reports",
+        image: "/services/reports.png",
+    },
+    {
+        title: "Payments",
+        description: "Payments Description",
+        href: "/payments",
+        image: "/services/payments.png",
+    },
+    {
+        title: "Settings",
+        description: "Settings Description",
+        href: "/settings",
+        image: "/services/settings.png",
+    },
+]
+    
+

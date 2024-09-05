@@ -6,11 +6,12 @@ import { ArrowUpDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Medicine } from "@/backend/models/medicine"
+import { Admission } from "@/backend/models/admission"
 
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export const columns: ColumnDef<Medicine>[] = [
+export const columns: ColumnDef<Admission>[] = [
   {
     accessorKey: "_id",
     header: ({ column }) => {
@@ -68,7 +69,7 @@ export const columns: ColumnDef<Medicine>[] = [
     },
   },
   {
-    accessorKey: "doctorID",
+    accessorKey: "assignedDoctorID",
     header: ({ column }) => {
       return (
         <Button
@@ -82,7 +83,7 @@ export const columns: ColumnDef<Medicine>[] = [
     },
   },
   {
-    accessorKey: "doctorName",
+    accessorKey: "assignedDoctorName",
     header: ({ column }) => {
       return (
         <Button
@@ -114,6 +115,9 @@ export const columns: ColumnDef<Medicine>[] = [
     header: () => <div className="">Start Time</div>,
     cell: ({ row, column }) => {
       const startTime = String(row.getValue("startTime"))
+      if (!startTime) {
+        return <div className="text-right font-medium">-</div>
+      }
       const formatted = formatTimestamp(startTime);
 
       return <div className="text-right font-medium">{formatted}</div>
@@ -121,9 +125,12 @@ export const columns: ColumnDef<Medicine>[] = [
   },
   {
     accessorKey: "dischargeTime",
-    header: () => <div className="">Discha Time</div>,
+    header: () => <div className="">Discharge Time</div>,
     cell: ({ row }) => {
       const endTime = String(row.getValue("endTime"))
+      if (!endTime) {
+        return <div className="text-right font-medium">-</div>
+      }
       const formatted = formatTimestamp(endTime);
       
       return <div className="text-right font-medium">{formatted}</div>

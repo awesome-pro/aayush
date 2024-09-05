@@ -29,12 +29,12 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-opacity-80 bg-white/60 w-full shadow-md">
-      <div className="flex justify-between items-center px-5 py-3">
+    <nav className="sticky top-0 z-50 bg-opacity-80 bg-white/60 w-full shadow-md backdrop:blur-md">
+      <div className="flex justify-between items-center ">
         {/* Logo */}
         <Link className="flex items-center" href={'/'}>
           <Image src="/logo.png" width={50} height={40} alt="logo" className="hover:z-20"/>
-          <span className="text-3xl font-bold text-primary hover:bg-yellow-50 ml-2">MyBrand</span>
+          <span className="text-2xl font-bold text-primary hover:bg-yellow-50 ml-2">Aarogya</span>
         </Link>
 
         {/* Desktop Menu */}

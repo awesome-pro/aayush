@@ -1,0 +1,47 @@
+[
+    {
+      "_id": "64f3f10a90bcd00000000001",
+      "name": "Paracetamol 500mg",
+      "description": "Effective for reducing fever and mild pain.",
+      "manufacturer": "XYZ Pharmaceuticals",
+      "price": 20.5,
+      "stock": 150,
+      "image": "https://example.com/images/paracetamol.jpg"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000002",
+      "name": "Ibuprofen 400mg",
+      "description": "Non-steroidal anti-inflammatory drug (NSAID) for pain relief.",
+      "manufacturer": "ABC Pharma",
+      "price": 35.0,
+      "stock": 200,
+      "image": "https://example.com/images/ibuprofen.jpg"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000003",
+      "name": "Amoxicillin 500mg",
+      "description": "Broad-spectrum antibiotic for bacterial infections.",
+      "manufacturer": "MedLife",
+      "price": 50.0,
+      "stock": 100,
+      "image": "https://example.com/images/amoxicillin.jpg"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000004",
+      "name": "Cough Syrup",
+      "description": "Relieves cough and soothes the throat.",
+      "manufacturer": "Wellness Inc.",
+      "price": 60.0,
+      "stock": 80,
+      "image": "https://example.com/images/cough-syrup.jpg"
+    },
+    {
+      "_id": "64f3f10a90bcd00000000005",
+      "name": "Vitamin C Tablets 500mg",
+      "description": "Boosts immunity and supports overall health.",
+      "manufacturer": "Nutra Health",
+      "price": 25.0,
+      "stock": 250
+    }
+  ]
+  
