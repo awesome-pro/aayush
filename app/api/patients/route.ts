@@ -1,18 +1,15 @@
+import PatientModel from "@/backend/models/patient";
 import { NextRequest, NextResponse } from "next/server";
 import dbConnect from "@/lib/db-connect";
-import PatientModel from "@/backend/models/patient";
 
-
-export  async function GET(req: NextRequest) {
-
-    await dbConnect();
-
+export async function GET(req: NextRequest) {
+    
     try {
-        const patients = PatientModel.find();
+        await dbConnect();
+        const patients = await PatientModel.find();
 
         if (patients) {
-            console.log(patients);
-            return NextResponse.json({ message: "Patients fetched successfully " }, {status: 200});
+            return NextResponse.json({ data: patients }, {status: 200});
         }
         
         return NextResponse.json({ message: "No patients found" }, {status: 404});

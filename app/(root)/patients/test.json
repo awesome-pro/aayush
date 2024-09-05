@@ -1,0 +1,78 @@
+[
+    {
+      "_id": "1",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phoneNumber": "1234567890",
+      "age": 32,
+      "diseases": ["Diabetes", "Hypertension"],
+      "height": 180,
+      "weight": 75,
+      "bloodGroup": "O+",
+      "allergies": "Peanuts",
+      "currentMedications": "Metformin",
+      "address": "123 Main St, New York, NY",
+      "image": "https://example.com/image/johndoe.jpg"
+    },
+    {
+      "_id": "2",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phoneNumber": "0987654321",
+      "age": 28,
+      "diseases": ["Asthma"],
+      "height": 165,
+      "weight": 60,
+      "bloodGroup": "A+",
+      "allergies": "Pollen",
+      "currentMedications": "Inhaler",
+      "address": "456 Elm St, Los Angeles, CA",
+      "image": "https://example.com/image/janesmith.jpg"
+    },
+    {
+      "_id": "3",
+      "name": "Michael Johnson",
+      "email": "michael.johnson@example.com",
+      "phoneNumber": "1122334455",
+      "age": 45,
+      "diseases": ["Arthritis"],
+      "height": 170,
+      "weight": 80,
+      "bloodGroup": "B+",
+      "allergies": "Shellfish",
+      "currentMedications": "Ibuprofen",
+      "address": "789 Oak St, Chicago, IL",
+      "image": "https://example.com/image/michaeljohnson.jpg"
+    },
+    {
+      "_id": "4",
+      "name": "Emily Davis",
+      "email": "emily.davis@example.com",
+      "phoneNumber": "6677889900",
+      "age": 36,
+      "diseases": ["Migraine"],
+      "height": 160,
+      "weight": 55,
+      "bloodGroup": "AB-",
+      "allergies": "None",
+      "currentMedications": "Sumatriptan",
+      "address": "321 Pine St, Miami, FL",
+      "image": "https://example.com/image/emilydavis.jpg"
+    },
+    {
+      "_id": "5",
+      "name": "David Brown",
+      "email": "david.brown@example.com",
+      "phoneNumber": "4455667788",
+      "age": 50,
+      "diseases": ["Cholesterol", "Hypertension"],
+      "height": 175,
+      "weight": 85,
+      "bloodGroup": "O-",
+      "allergies": "Latex",
+      "currentMedications": "Atorvastatin",
+      "address": "987 Maple St, San Francisco, CA",
+      "image": "https://example.com/image/davidbrown.jpg"
+    }
+  ]
+  

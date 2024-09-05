@@ -1,18 +1,14 @@
-import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "@/lib/db-connect";
 import DoctorModel from "@/backend/models/doctor";
+import { NextRequest, NextResponse } from "next/server";
 
 
-export  async function GET(req: NextRequest) {
-
-    await dbConnect();
+export async function GET(req: NextRequest) {
 
     try {
-        const doctors = DoctorModel.find();
+        const doctors = await DoctorModel.find();
 
         if (doctors) {
-            console.log(doctors);
-            return NextResponse.json({ message: "Doctors fetched successfully " }, {status: 200});
+            return NextResponse.json({ data: doctors }, {status: 200});
         }
         
         return NextResponse.json({ message: "No doctors found" }, {status: 404});

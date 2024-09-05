@@ -1,6 +1,7 @@
 import mongoose, { Document } from 'mongoose';
 
 export interface Doctor extends Document {
+    _id: string;
     name: string;
     email: string;
     phoneNumber?: number;
@@ -17,6 +18,7 @@ export interface Doctor extends Document {
 }
 
 const DoctorSchema = new mongoose.Schema<Doctor>({
+    _id: { type: String, required: true },
     name: { type: String, required: true },
     email: { type: String, required: true },
     phoneNumber: { type: Number, required: false },

@@ -39,6 +39,7 @@ function NewCategorySheet() {
         setLoading(true);
         try {
             const response = await axios.get('http://localhost:3000/api/patients');
+            console.log('Patients: ', response.data.data);
             setPatients(response.data.data);
         } catch (error) {
             console.error('Error fetching patients: ', error);
@@ -52,6 +53,7 @@ function NewCategorySheet() {
         setLoading(true);
         try {
             const response = await axios.get('http://localhost:3000/api/departments');
+            console.log('Departments: ', response.data);
            setDepartments(response.data.data);
         } catch (error) {
             console.error('Error fetching departments: ', error);
@@ -64,6 +66,7 @@ function NewCategorySheet() {
         setLoading(true);
         try {
             const response = await axios.get('http://localhost:3000/api/doctors');
+            console.log('Doctors: ', response.data.data);
             setDoctors(response.data.data);
         } catch (error) {
             console.error('Error fetching doctors: ', error);
