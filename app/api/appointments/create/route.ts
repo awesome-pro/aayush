@@ -3,9 +3,10 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import AppointmentModel from "@/backend/models/appointment";
 
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
     
-   const { patientId, patientName, doctorId, doctorName, startTime, endTime, status, notes } = await req.json();
+   const { patientId, patientName, doctorId, doctorName, startTime, endTime, status, notes, department } = await req.json();
+   console.log(patientId, patientName, doctorId, doctorName, startTime, endTime, status, notes);
 
     const newDoctor = new AppointmentModel({
         patientId,
@@ -15,7 +16,8 @@ export default async function POST(req: NextRequest) {
         startTime,
         endTime,
         status,
-        notes
+        notes,
+        department
     }); 
 
     const response = await newDoctor.save();

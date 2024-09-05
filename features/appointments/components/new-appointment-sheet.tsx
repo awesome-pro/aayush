@@ -71,27 +71,27 @@ function NewCategorySheet() {
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent className='bg-white w-full overflow-y-scroll'>
+        <SheetContent className='bg-white w-full overflow-scroll no-scrollbar'>
             <SheetHeader>
             <SheetTitle>New Appointment</SheetTitle>
             <SheetDescription>
-                Create a new Appointment to organise your transactions
+                Create a new Appointment
             </SheetDescription>
             </SheetHeader>
             <AppointmentForm
             onSubmit={onSubmit}
             disabled={false}
             defaultValues={{
-                _id: "",
-                patientId: "",
-                patientName: "",
-                doctorId: "",
-                doctorName: "",
-                department: "",
+                _id: "12",
+                patientId: "1234",
+                patientName: "Abhinandan",
+                doctorId: "12",
+                doctorName: "Abhinandan",
+                department: "343",
                 startTime: new Date(),
                 endTime: new Date(),
                 status: "pending",
-                notes: []
+                notes: ['notes']
             }}
             />
         </SheetContent>
