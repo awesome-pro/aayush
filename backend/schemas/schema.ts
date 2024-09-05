@@ -12,3 +12,19 @@ export const appointmentSchema = z.object({
     status: z.enum(["pending", "processing", "success", "failed"]),
     notes: z.array(z.string()).optional()
 });
+
+export const patientSchema = z.object({
+    _id: z.string(),
+    name: z.string(),
+    email: z.string(),
+    phoneNumber: z.string(),
+    age: z.number(),
+    diseases: z.array(z.string()).optional(),
+    height: z.number(),
+    weight: z.number(),
+    bloodGroup: z.string(),
+    allergies: z.array(z.string()).optional(),
+    currentMedications: z.array(z.string()).optional(),
+    address: z.string(),
+    image: z.string().optional()
+});

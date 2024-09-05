@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { create } from 'zustand';
 
-export function useNewPatient() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const onOpen = () => setIsOpen(true);
-  const onClose = () => setIsOpen(false);
-
-  return {
-    isOpen,
-    onOpen,
-    onClose
-  };
+type NewPatientState = {
+    isOpen: boolean;
+    onOpen: () => void;
+    onClose: () => void;
 }
+
+export const useNewPatient = create<NewPatientState>((set) => ({
+    isOpen: false,
+    onOpen: () => set({ isOpen: true }),
+    onClose: () => set({ isOpen: false }),
+}));

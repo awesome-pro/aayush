@@ -18,7 +18,7 @@ import { Patient } from '@/backend/models/patient'; // Patient model interface
 import axios from 'axios';
 
 function PatientPage() {
-  const newPatient = useNewPatient; // Hook to open new patient form
+  const newPatient = useNewPatient(); // Hook to open new patient form
   const [patients, setPatients] = React.useState<Patient[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
 
