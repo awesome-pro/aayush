@@ -9,7 +9,6 @@ export default async function PUT(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
 
-
     const { departments, hospital, roomNumber, qualifications, experience, consultationFee, availability, bio, rating } = await req.json();
     await dbConnect();
     try {

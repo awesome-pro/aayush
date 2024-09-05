@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+
+export type status = "pending" | "processing" | "success" | "failed";
 export interface Appointment{
     patientId: string;
     patientName: string;
@@ -8,9 +10,10 @@ export interface Appointment{
     department: string;
     startTime: Date;
     endTime: Date;
-    status: string;
+    status: status;
     notes?: string[];
 }
+
 
 
 const AppointmentSchema = new mongoose.Schema<Appointment>(
