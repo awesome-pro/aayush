@@ -18,7 +18,8 @@ import { navLinks } from "@/data"
 import { Button } from "./ui/button"
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
 import { useState } from "react"
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
+//import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"
+import { ChevronDownCircleIcon, Menu } from "lucide-react"
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -50,7 +51,7 @@ export default function Navbar() {
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-2xl">
-            {menuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+            {menuOpen ? <Menu /> : <ChevronDownCircleIcon />}
           </button>
         </div>
 

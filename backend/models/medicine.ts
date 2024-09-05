@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export interface Medicine {
+    _id: mongoose.Types.ObjectId;
     name: string;
     description?: string;
     manufacturer?: string;
@@ -20,3 +21,6 @@ const MedicineSchema = new mongoose.Schema<Medicine>({
 {
     timestamps: true
 });
+
+const MedicineModel = mongoose.models.Medicine || mongoose.model<Medicine>('Medicine', MedicineSchema);
+export default MedicineModel;

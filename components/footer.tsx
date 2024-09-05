@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaTwitter, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
+//import { FaTwitter, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-200">
+    <footer className="">
       <div className="container mx-auto px-5 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Medical App Info */}
@@ -42,12 +42,12 @@ const Footer = () => {
           {/* Connect With Us */}
           <div>
             <h2 className="text-lg text-gray-100 font-semibold mb-4">Connect With Us</h2>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white hover:bg-gray-700 rounded-full p-3 transition-all"><FaTwitter size={20} /></a>
               <a href="#" className="text-gray-300 hover:text-white hover:bg-gray-700 rounded-full p-3 transition-all"><FaInstagram size={20} /></a>
               <a href="#" className="text-gray-300 hover:text-white hover:bg-gray-700 rounded-full p-3 transition-all"><FaFacebook size={20} /></a>
               <a href="#" className="text-gray-300 hover:text-white hover:bg-gray-700 rounded-full p-3 transition-all"><FaYoutube size={20} /></a>
-            </div>
+            </div> */}
           </div>
         </div>
 
