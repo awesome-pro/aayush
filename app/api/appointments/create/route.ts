@@ -20,7 +20,7 @@ export default async function POST(req: NextRequest) {
 
     const response = await newDoctor.save();
     if (response) {
-        return NextResponse.json({ message: "Doctor created successfully", data: response }, {status: 200});
+        return NextResponse.json({ message: "Doctor created successfully", data: response }, {status: 201});
     }
 
     return NextResponse.json({ message: "Doctor creation failed" }, {status: 400});

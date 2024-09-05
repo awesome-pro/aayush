@@ -1,6 +1,7 @@
 import * as z from 'zod';
 
 export const appointmentSchema = z.object({
+    _id: z.string(),
     patientId: z.string(),
     patientName: z.string(),
     doctorId: z.string(),
@@ -9,5 +10,5 @@ export const appointmentSchema = z.object({
     startTime: z.date(),
     endTime: z.date(),
     status: z.enum(["pending", "processing", "success", "failed"]),
-    notes: z.array(z.string())
+    notes: z.array(z.string()).optional()
 });

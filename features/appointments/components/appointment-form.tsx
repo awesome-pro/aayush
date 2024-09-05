@@ -48,9 +48,27 @@ function AppointmentForm(
         onDelete?.();
     }
   return (
-    <div>
+    <div className=' overflow-scroll'>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4 pt-4'>
+            <FormField
+                name='_id'
+                control={form.control}
+                render={({field}) => (
+                    <FormItem>
+                        <FormLabel>
+                           ID
+                        </FormLabel>
+                        <FormControl>
+                            <Input
+                            disabled={disabled}
+                            placeholder='e.g. Food, Travel...'
+                            {...field}
+                            />
+                        </FormControl>
+                    </FormItem>
+                )}
+             />
                 <FormField
                 name='patientName'
                 control={form.control}

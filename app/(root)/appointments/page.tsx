@@ -21,7 +21,7 @@ import axios from 'axios';
 
 function AppointmentPage() {
 
-    const newCategory = useNewAppointment();
+    const newAppointment = useNewAppointment();
 
     const [appointment, setAppointment] = React.useState<Appointment[]>([]); 
     const [loading, setLoading] = React.useState<boolean>(true);
@@ -58,7 +58,7 @@ function AppointmentPage() {
               <Button 
                className=' w-full lg:w-48' 
                size={'sm'}
-               onClick={newCategory.onOpen}
+               onClick={newAppointment.onOpen}
                >
                 <Plus size={16} className='mr-2' />
                     Add New
@@ -87,7 +87,7 @@ function AppointmentPage() {
               <Button 
                className=' w-full lg:w-48' 
                size={'sm'}
-               onClick={newCategory.onOpen}
+               onClick={newAppointment.onOpen}
                >
                 <Plus size={16} className='mr-2' />
                     Add New
