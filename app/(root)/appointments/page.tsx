@@ -28,6 +28,7 @@ function AppointmentPage() {
 
 
     const fetchAppointment = useCallback(async () => {
+      setLoading(true);
       try {
         const response = await axios.get('http://localhost:3000/api/appointments');
         const data = await response.data.data;
@@ -36,6 +37,8 @@ function AppointmentPage() {
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data: ', error);
+      }finally{
+        setLoading(false);
       }
     }
     , []);
@@ -44,6 +47,35 @@ function AppointmentPage() {
       fetchAppointment();
     }, [fetchAppointment]);
 
+    if(loading) {
+      return (
+        <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 '>
+          <Card className='border-none drop-shadow-sm'>
+            <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
+                <CardTitle className='text-xl line-clamp-1'>
+                    Appointment Page
+                </CardTitle>
+              <Button 
+               className=' w-full lg:w-48' 
+               size={'sm'}
+               onClick={newCategory.onOpen}
+               >
+                <Plus size={16} className='mr-2' />
+                    Add New
+               </Button>
+            </CardHeader>
+            <CardContent className='lg:px-auto lg:mx-auto -m-4'>
+              <div className="container mx-0 py-10">
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+                <Skeleton />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )
+    }
 
   return (
     <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 '>

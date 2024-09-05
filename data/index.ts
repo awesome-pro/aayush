@@ -140,6 +140,18 @@ export const dummySkills = [
 
 export const servisesList: ServiceCardProps[] = [
     {
+        title: "Patients",
+        description: "Patients Description",
+        href: "/patients",
+        image: "/services/patients.png",
+    },
+    {
+        title: "Doctors",
+        description: "Doctors Description",
+        href: "/doctors",
+        image: "/services/doctors.png",
+    },
+    {
         title: "Medicines",
         description: "Medicine Description",
         href: "/medicines",
