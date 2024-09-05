@@ -65,7 +65,7 @@ export const columns: ColumnDef<Patient>[] = [
     ),
     cell: ({ row }) => {
       const diseases = row.getValue("diseases") as string[];
-      return <div>{diseases?.length ? diseases.join(", ") : "No diseases"}</div>;
+      return <div>{diseases?.length ? diseases.join(',') : "No diseases"}</div>;
     },
   },
   {
@@ -117,7 +117,7 @@ export const columns: ColumnDef<Patient>[] = [
     ),
     cell: ({ row }) => {
       const allergies = row.getValue("allergies") as string[];
-      return <div>{allergies?.length ? allergies.join(", ") : "No allergies"}</div>;
+      return <div>{allergies?.length ? allergies : "No allergies"}</div>;
     },
   },
   {
@@ -133,7 +133,7 @@ export const columns: ColumnDef<Patient>[] = [
     ),
     cell: ({ row }) => {
       const medications = row.getValue("currentMedications") as string[];
-      return <div>{medications?.length ? medications.join(", ") : "No medications"}</div>;
+      return <div>{medications?.length ? medications : "No medications"}</div>;
     },
   },
   {
