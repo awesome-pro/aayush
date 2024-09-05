@@ -50,14 +50,14 @@ function AppointmentForm(
   return (
     <div className=''>
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4 pt-4'>
+            <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4 mt-4 items-end'>
             <FormField
                 name='_id'
                 control={form.control}
                 render={({field}) => (
                     <FormItem>
                         <FormLabel>
-                           ID
+                           Appointment ID
                         </FormLabel>
                         <FormControl>
                             <Input
@@ -69,6 +69,7 @@ function AppointmentForm(
                     </FormItem>
                 )}
              />
+                <div className='md:grid md:grid-cols-2 items-center justify-center gap-6'>
                 <FormField
                 name='patientName'
                 control={form.control}
@@ -223,27 +224,38 @@ function AppointmentForm(
                     </FormItem>
                 )}
                 />
-                <Button 
-                className='w-full' 
-                disabled={disabled}
-                type='submit'
-                onClick={form.handleSubmit(handleSubmit)}
-                >
-                    {id ? "Save Changes" : "Create Category" }
-                </Button>
-                
-                {!!id && (
-                    <Button
+                </div>
+                <span className='w-full flex items-center justify-between gap-2'>
+                    <Button 
+                    variant={'ghost'}
+                    className='w-full' 
                     disabled={disabled}
-                    onClick={() => handleDelete()}
-                    className='w-full text-red-600 border-red-600 hover:text-white hover:bg-red-600'
-                    variant={'outline'}
-                    type='button'
+                    type='reset'
+                    onClick={() => form.reset()}
                     >
-                        <Trash className='size-4 mr-2'/>
-                        Delete Category
+                        Cancel
                     </Button>
-                )}
+                    <Button 
+                    className='w-full' 
+                    disabled={disabled}
+                    type='submit'
+                    onClick={form.handleSubmit(handleSubmit)}
+                    >
+                        {id ? "Save Changes" : "Create Category" }
+                    </Button>
+                </span>
+                {!!id && (
+                        <Button
+                        disabled={disabled}
+                        onClick={() => handleDelete()}
+                        className='w-full text-red-600 border-red-600 hover:text-white hover:bg-red-600'
+                        variant={'outline'}
+                        type='button'
+                        >
+                            <Trash className='size-4 mr-2'/>
+                            Delete Category
+                        </Button>
+                    )}
             </form>
         </Form>
     </div>

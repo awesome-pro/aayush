@@ -49,7 +49,7 @@ function NewCategorySheet() {
 
   return (
     <Sheet open={isOpen || loading} onOpenChange={onClose}>
-        <SheetContent className='bg-white w-full overflow-scroll no-scrollbar'>
+        <SheetContent className=' overflow-scroll no-scrollbar'>
             <SheetHeader>
             <SheetTitle>New Appointment</SheetTitle>
             <SheetDescription>
