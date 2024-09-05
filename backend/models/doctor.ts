@@ -25,7 +25,7 @@ const DoctorSchema = new mongoose.Schema<Doctor>({
     roomNumber: { type: String, required: false },
     appointmentIds: [
         {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
         }
     ],
     qualifications: { type: String, required: false },

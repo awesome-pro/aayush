@@ -9,6 +9,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/
 import { Trash } from 'lucide-react'
 import { appointmentSchema } from '@/backend/schemas/schema'
 import { formatDateToInput, parseDateFromInput } from '@/lib/utils'
+import Select from '@/components/select'
+import DatePicker from '@/components/date-picker'
 
 const formSchema = appointmentSchema;
 
@@ -20,6 +22,12 @@ type Props = {
     onSubmit: (values: FormValues) => void;
     onDelete?: () => void;
     disabled?: boolean;
+    patientOptions?: { label: string; value: string }[];
+    doctorOptions?: { label: string; value: string }[];
+    departmentOptions?: { label: string; value: string }[]; 
+    onCreateDoctor?: (value: string) => void;
+    onCreatePatient?: (value: string) => void;
+    onCreateDepartment?: (value: string) => void;
 }
 
 function AppointmentForm(
@@ -28,7 +36,13 @@ function AppointmentForm(
         defaultValues,
         onSubmit,
         onDelete,
-        disabled 
+        disabled,
+        patientOptions = [],
+        doctorOptions = [],
+        departmentOptions = [],
+        onCreateDoctor,
+        onCreatePatient,
+        onCreateDepartment
     } : Props
 ) {
 
@@ -71,7 +85,7 @@ function AppointmentForm(
              />
                 <div className='md:grid md:grid-cols-2 items-center justify-center gap-6'>
                 <FormField
-                name='patientName'
+                name='patientId'
                 control={form.control}
                 render={({field}) => (
                     <FormItem>
@@ -79,53 +93,20 @@ function AppointmentForm(
                            Patient Name
                         </FormLabel>
                         <FormControl>
-                            <Input
+                        <Select
+                            placeholder='Select an Account'
+                            options={patientOptions}
+                            onCreate={onCreatePatient}
+                            value={field.value}
+                            onChange={field.onChange}
                             disabled={disabled}
-                            placeholder='e.g. Food, Travel...'
-                            {...field}
-                            />
+                        />
                         </FormControl>
                     </FormItem>
                 )}
                 />
                 <FormField
-                name='patientId'
-                control={form.control}
-                render={({field}) => (
-                    <FormItem>
-                        <FormLabel>
-                           Patient ID
-                        </FormLabel>
-                        <FormControl>
-                            <Input
-                            disabled={disabled}
-                            placeholder='e.g. Food, Travel...'
-                            {...field}
-                            />
-                        </FormControl>
-                    </FormItem>
-                )}
-                />
-                <FormField
-                name='doctorName'
-                control={form.control}
-                render={({field}) => (
-                    <FormItem>
-                        <FormLabel>
-                           Doctor Name
-                        </FormLabel>
-                        <FormControl>
-                            <Input
-                            disabled={disabled}
-                            placeholder='e.g. Food, Travel...'
-                            {...field}
-                            />
-                        </FormControl>
-                    </FormItem>
-                )}
-                />
-                <FormField
-                name='doctorId'
+                 name='doctorId'
                 control={form.control}
                 render={({field}) => (
                     <FormItem>
@@ -133,16 +114,19 @@ function AppointmentForm(
                            Doctor ID
                         </FormLabel>
                         <FormControl>
-                            <Input
-                            disabled={disabled}
-                            placeholder='e.g. Food, Travel...'
-                            {...field}
+                            <Select
+                                placeholder='Select an Account'
+                                options={doctorOptions}
+                                onCreate={onCreateDoctor}
+                                value={field.value}
+                                onChange={field.onChange}
+                                disabled={disabled}
                             />
                         </FormControl>
                     </FormItem>
                 )}
                 />
-
+                
                <FormField
                  name='status'
                  control={form.control}
@@ -171,10 +155,13 @@ function AppointmentForm(
                            Department
                         </FormLabel>
                         <FormControl>
-                            <Input
-                            disabled={disabled}
-                            placeholder='e.g. Food, Travel...'
-                            {...field}
+                            <Select
+                                placeholder='Select a Department'
+                                options={departmentOptions}
+                                onCreate={onCreateDepartment}
+                                value={field.value}
+                                onChange={field.onChange}
+                                disabled={disabled}
                             />
                         </FormControl>
                     </FormItem>
@@ -188,14 +175,10 @@ function AppointmentForm(
                     <FormItem>
                     <FormLabel>Start Time</FormLabel>
                     <FormControl>
-                        <Input
-                        disabled={disabled}
-                        type='datetime-local'
-                        value={field.value ? formatDateToInput(field.value) : ''}
-                        onChange={(e) => field.onChange(parseDateFromInput(e.target.value))}
-                        onBlur={field.onBlur}
-                        name={field.name}
-                        ref={field.ref}
+                        <DatePicker
+                            value={field.value}
+                            onChange={field.onChange}
+                            disabled={disabled}
                         />
                     </FormControl>
                     </FormItem>
@@ -241,7 +224,7 @@ function AppointmentForm(
                     type='submit'
                     onClick={form.handleSubmit(handleSubmit)}
                     >
-                        {id ? "Save Changes" : "Create Category" }
+                        {id ? "Save Changes" : "Create Appointment" }
                     </Button>
                 </span>
                 {!!id && (

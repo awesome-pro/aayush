@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, { useCallback } from 'react'
 import {
     Sheet,
     SheetContent,
@@ -16,6 +16,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Loader2 } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Patient } from '@/backend/models/patient';
+import { Department } from '@/backend/models/department';
+import { Doctor } from '@/backend/models/doctor';
 
   
 const formSchema = appointmentSchema;
@@ -27,7 +30,52 @@ function NewCategorySheet() {
 
     const {isOpen, onClose} = useNewAppointment();
     const [loading, setLoading] = React.useState<boolean>(false);
+    const [patients, setPatients] = React.useState<Patient[]>([]);
+    const [departments, setDepartments] = React.useState<Department[]>([]);
+    const [doctors, setDoctors] = React.useState<Doctor[]>([]);
 
+
+    const fetchPatients = useCallback(async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('http://localhost:3000/api/patients');
+            setPatients(response.data.data);
+        } catch (error) {
+            console.error('Error fetching patients: ', error);
+        }finally{
+            setLoading(false);
+        }
+    }
+    ,[]);
+
+    const fetchDepartments = useCallback(async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('http://localhost:3000/api/departments');
+           setDepartments(response.data.data);
+        } catch (error) {
+            console.error('Error fetching departments: ', error);
+        }finally{
+            setLoading(false);
+        }
+    }, []);
+
+    const fetchDoctors = useCallback(async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('http://localhost:3000/api/doctors');
+            setDoctors(response.data.data);
+        } catch (error) {
+            console.error('Error fetching doctors: ', error);
+        }finally{
+            setLoading(false);
+        }
+    },[]);
+    React.useEffect(() => {
+        fetchPatients();
+        fetchDepartments();
+        fetchDoctors();
+    }, [fetchPatients, fetchDepartments, fetchDoctors]);
     const onSubmit = async (values: FormValues) => {
         setLoading(true);
        try {
@@ -51,12 +99,33 @@ function NewCategorySheet() {
     <Sheet open={isOpen || loading} onOpenChange={onClose}>
         <SheetContent className=' overflow-scroll no-scrollbar'>
             <SheetHeader>
-            <SheetTitle>New Appointment</SheetTitle>
+            <SheetTitle>New Appointment {loading}</SheetTitle>
             <SheetDescription>
                 Create a new Appointment
             </SheetDescription>
             </SheetHeader>
             <AppointmentForm
+            onCreateDoctor={() => {
+                console.log('create doctor');
+            }}
+            onCreatePatient={() => {
+                console.log('create patient');
+            }}
+            onCreateDepartment={() => {
+                console.log('create department');
+            }}
+            patientOptions={patients.map((patient) => ({
+                label: patient.name + '-' + (patient._id as string),
+                value: (patient._id as string)
+            }))}
+            doctorOptions={doctors.map((doctor) => ({
+                label: doctor.name + '-' + (doctor._id as string),
+                value: (doctor._id as string)
+            }))}
+            departmentOptions={departments.map((department) => ({
+                label: department.name + '-' + (department._id as string),
+                value: (department._id as string)
+            }))}
             onSubmit={onSubmit}
             disabled={loading}
             defaultValues={{

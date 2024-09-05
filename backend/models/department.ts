@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 export interface Department {
+    _id: string;
     name: string;
     doctors?: string[];
     image?: string;
@@ -8,6 +9,7 @@ export interface Department {
 }
 
 const DepartmentSchema = new Schema<Department>({
+    _id: { type: String, required: true },
     name: { type: String, required: true },
     doctors: { type: [String], required: false },
     image: { type: String, required: false },
