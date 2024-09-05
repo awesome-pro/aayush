@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback } from 'react'
-import { columns } from './columns'; // Update columns to match department fields
+import { columns } from './columns';
 import { DataTable } from '@/components/ui/data-table';
 import {
     Card,

@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Department } from "@/backend/models/department" // Assuming you have a Department model
