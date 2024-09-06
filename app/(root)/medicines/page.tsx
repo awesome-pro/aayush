@@ -60,6 +60,7 @@ function AppointmentPage() {
                     Add New
                </Button>
             </CardHeader>
+            <img src='https://plus.unsplash.com/premium_photo-1673185180737-fcdda085a9fb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWVkaWNpbmVzfGVufDB8fDB8fHww' alt='/' className='w-40 h-32 rounded-3xl ml-5' />
             <CardContent className='lg:px-auto lg:mx-auto -m-4'>
               <div className="container mx-0 py-10">
                 <DataTable 

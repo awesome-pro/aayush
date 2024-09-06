@@ -61,12 +61,7 @@ export default function Home() {
             </p>
             
             {/* Buttons Section */}
-            <div className="flex  justify-center lg:justify-start gap-4 lg:mt-10 mb-10">
-              <Link href='/appointments'>
-                <Button className='bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3 md:w-44'>
-                    Ask AI <SparkleIcon className='inline-block ml-2' size={20}/>
-                </Button>
-              </Link>
+            <div className="flex flex-col lg:flex-row justify-center lg:justify-start gap-4 lg:mt-10">
 
               <Link href='/services'>
                 <Button className='rounded-3xl bg-primary/5 md:min-w-44' variant={'ghost'}>
