@@ -9,7 +9,9 @@ import Image from "next/image"
   export default function FAQ() {
     return (
 
-      <div className="flex flex-col md:flex-row gap-4 justify-center px-8 py-4 items-center">
+      <div className="mt-4 p-2">
+        <h1 className="text-4xl font-bold text-primary">Frequently Asked Questions</h1>
+        <div className="flex flex-col md:flex-row gap-4 justify-center px-8 py-4 items-center">
         <Image
         src={"/images/faq.png"}
         alt="FAQ"
@@ -49,6 +51,7 @@ import Image from "next/image"
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+      </div>
       </div>
       
     )

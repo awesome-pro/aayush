@@ -12,6 +12,8 @@ import { dummyDoctors, latestNews, specialization } from "../components/data/doc
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { SparkleIcon } from "lucide-react";
+import { Card } from "./ui/card";
 
 export default function Home() {
 
@@ -44,7 +46,7 @@ export default function Home() {
   return (
     <>
       <div className="bg-blue-100 py-20 px-4 lg:px-10">
-        <div className='flex flex-col lg:flex-row justify-between items-center max-w-screen-xl mx-auto gap-8'>
+        <div className='flex flex-col lg:flex-row justify-between items-center max-w-screen-xl mx-auto gap-0'>
           
           {/* Text Section */}
           <div className='lg:w-1/2 text-center lg:text-left'>
@@ -59,48 +61,45 @@ export default function Home() {
             </p>
             
             {/* Buttons Section */}
-            <div className="flex flex-col lg:flex-row justify-center lg:justify-start gap-4 lg:mt-10">
+            <div className="flex  justify-center lg:justify-start gap-4 lg:mt-10 mb-10">
               <Link href='/appointments'>
-                <Button className='bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3'>
-                  Manage OPD
+                <Button className='bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3 md:w-44'>
+                    Ask AI <SparkleIcon className='inline-block ml-2' size={20}/>
                 </Button>
               </Link>
 
               <Link href='/services'>
-                <Button className='rounded-3xl bg-primary/5 min-w-48' variant={'ghost'}>
+                <Button className='rounded-3xl bg-primary/5 md:min-w-44' variant={'ghost'}>
                   All Services
-                </Button>
-              </Link>
-
-              <Link href='/consult-ai-doctor'>
-                <Button className='rounded-3xl bg-blue-500 hover:bg-blue-600 text-white min-w-48'>
-                  Ask AI
                 </Button>
               </Link>
             </div>
           </div>
 
           {/* Image Section */}
-          <div className='lg:w-1/2 flex justify-center'>
-            <img
+
+            <Image
               src="/images/doctor-photo.png"
               alt='Doctor Image'
-              className='w-full max-w-md rounded-2xl shadow-lg'
+              className="max-w-md rounded-2xl"
+              width={400}
+              height={400}
             />
-          </div>
         </div>
       </div>
 
       {/* Specialization Section */}
       <div className="specialization-box py-10 bg-blue-50 text-center">
-        <h2 className="text-4xl font-bold mb-10 text-blue-900">Find By Hospital Specialization</h2>
+        <h2 className="text-4xl font-bold mb-10 text-blue-900">Manage Departments</h2>
         <div className="flex flex-wrap gap-8 justify-center items-center max-w-screen-xl mx-auto">
           {specialization.slice(0, index).map((specialization, index) => (
             <div key={index} className="flex flex-col items-center">
-              <img
+              <Image
                 src={specialization.image}
                 alt={specialization.name}
                 className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full shadow-md"
+                width={200}
+                height={200}
               />
               <h3 className="text-xl font-semibold mt-4 text-blue-900">{specialization.name}</h3>
             </div>
@@ -121,9 +120,9 @@ export default function Home() {
           <Slider {...settings}>
             {dummyDoctors.map((doctor) => (
               <div key={doctor.id} className="p-4">
-                <div className="border h-60 w-72 border-gray-300 rounded-xl shadow-lg bg-blue-50 flex flex-col items-center justify-center">
-                  <img src={doctor.image} alt={doctor.name} className="h-full w-full object-cover rounded-md" />
-                </div>
+                <Card className="border h-60 border-gray-300 rounded-lg shadow-lg bg-blue-50 flex flex-col items-center justify-center">
+                  <img src={doctor.image} alt={doctor.name} className="h-full w-full object-cover rounded-md"/>
+                </Card>
                 <h3 className="text-lg font-semibold mt-4 text-gray-700">{doctor.name}</h3>
                 <p className="text-gray-500">{doctor.specialty}</p>
               </div>
@@ -139,9 +138,9 @@ export default function Home() {
           <Slider {...settings}>
             {latestNews.map((news) => (
               <div key={news.id} className="p-4">
-                <div className="border h-60 w-72 border-gray-300 rounded-xl shadow-lg bg-yellow-50 flex flex-col items-center justify-center">
+                <Card className="border h-60  border-gray-300 rounded-xl shadow-lg bg-yellow-50 flex flex-col items-center justify-center">
                   <img src={news.image} alt={news.title} className="h-full w-full object-cover rounded-md" />
-                </div>
+                </Card>
                 <h3 className="text-lg font-semibold mt-4 text-gray-700">{news.title}</h3>
                 <p className="text-gray-500">{news.summary}</p>
               </div>

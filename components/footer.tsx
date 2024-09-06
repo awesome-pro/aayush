@@ -3,7 +3,7 @@ import { FaTwitter, FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-100 text-gray-500">
       <div className="container mx-auto px-5 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Medical App Info */}
@@ -19,11 +19,11 @@ const Footer = () => {
           <div>
             <h2 className="text-lg text-gray-100 font-semibold mb-4">Quick Links</h2>
             <ul className="text-gray-400 space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Our Pricing</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Our Gallery</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Appointment</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> About Us</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Our Pricing</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Our Gallery</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Appointment</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">➡️</span> Privacy Policy</a></li>
             </ul>
           </div>
 
@@ -31,11 +31,11 @@ const Footer = () => {
           <div>
             <h2 className="text-lg text-gray-100 font-semibold mb-4">Specialties</h2>
             <ul className="text-gray-400 space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">🩺</span> Orthology</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">🧠</span> Neurology</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">🦷</span> Dental Care</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">👁️</span> Ophthalmology</a></li>
-              <li><a href="#" className="hover:text-white transition-colors duration-300 flex items-center"><span className="mr-2">❤️</span> Cardiology</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">🩺</span> Orthology</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">🧠</span> Neurology</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">🦷</span> Dental Care</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">👁️</span> Ophthalmology</a></li>
+              <li><a href="#" className="hover:text-black transition-colors duration-300 flex items-center"><span className="mr-2">❤️</span> Cardiology</a></li>
             </ul>
           </div>
 
