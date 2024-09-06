@@ -1,81 +1,135 @@
 [
-    {
-      "_id": "1",
-      "name": "Dr. Sarah White",
-      "email": "sarah.white@example.com",
-      "phoneNumber": 1234567890,
-      "departments": ["Cardiology", "Internal Medicine"],
-      "hospital": "Central City Hospital",
-      "roomNumber": "202A",
-      "appointmentIds": ["64fa2e5e2a4d470f8b7f4721", "64fa2e5e2a4d470f8b7f4722"],
-      "qualifications": "MD, Cardiology",
-      "experience": "15 years",
-      "consultationFee": 500,
-      "availability": "Mon-Fri, 9 AM - 4 PM",
-      "bio": "Dr. Sarah White is a highly experienced cardiologist with over 15 years of practice in the field of internal medicine and cardiology.",
-      "rating": 4.8
-    },
-    {
-      "_id": "2",
-      "name": "Dr. Michael Brown",
-      "email": "michael.brown@example.com",
-      "phoneNumber": 9876543210,
-      "departments": ["Orthopedics"],
-      "hospital": "Westside Orthopedic Clinic",
-      "roomNumber": "304B",
-      "appointmentIds": ["64fa2e5e2a4d470f8b7f4723"],
-      "qualifications": "MS, Orthopedics",
-      "experience": "10 years",
-      "consultationFee": 750,
-      "availability": "Tue-Thu, 10 AM - 5 PM",
-      "bio": "Dr. Michael Brown specializes in orthopedic surgery and has been treating patients with complex musculoskeletal conditions for over a decade.",
-      "rating": 4.5
-    },
-    {
-      "_id": "3",
-      "name": "Dr. Emily Johnson",
-      "email": "emily.johnson@example.com",
-      "departments": ["Pediatrics", "Neonatology"],
-      "hospital": "Children's Care Hospital",
-      "roomNumber": "101C",
-      "appointmentIds": ["64fa2e5e2a4d470f8b7f4724", "64fa2e5e2a4d470f8b7f4725"],
-      "qualifications": "MD, Pediatrics",
-      "experience": "12 years",
-      "consultationFee": 600,
-      "availability": "Mon-Wed, 9 AM - 2 PM",
-      "bio": "Dr. Emily Johnson is a pediatrician with expertise in neonatology, helping newborns with critical health conditions.",
-      "rating": 4.7
-    },
-    {
-      "_id": "4",
-      "name": "Dr. John Smith",
-      "email": "john.smith@example.com",
-      "phoneNumber": 3344556677,
-      "departments": ["Neurology"],
-      "hospital": "NeuroHealth Clinic",
-      "roomNumber": "401D",
-      "appointmentIds": [],
-      "qualifications": "MD, Neurology",
-      "experience": "20 years",
-      "consultationFee": 900,
-      "availability": "Mon-Fri, 8 AM - 3 PM",
-      "bio": "With over 20 years of experience, Dr. John Smith is a leading neurologist specializing in neurological disorders.",
-      "rating": 4.9
-    },
-    {
-      "_id": "5",
-      "name": "Dr. Linda Taylor",
-      "email": "linda.taylor@example.com",
-      "departments": ["Dermatology"],
-      "hospital": "SkinCare Center",
-      "roomNumber": "102E",
-      "appointmentIds": ["64fa2e5e2a4d470f8b7f4726"],
-      "qualifications": "MD, Dermatology",
-      "experience": "8 years",
-      "consultationFee": 400,
-      "availability": "Wed-Fri, 10 AM - 4 PM",
-      "bio": "Dr. Linda Taylor is an expert in treating various skin conditions and cosmetic dermatology.",
-      "rating": 4.4
-    }
-  ]
-  
+  {
+    "_id": "1",
+    "name": "Dr. Alice Williams",
+    "email": "alice.williams@example.com",
+    "phoneNumber": 1234567890,
+    "departments": ["Cardiology", "Internal Medicine"],
+    "hospital": "Heart Health Clinic",
+    "roomNumber": "301",
+    "appointmentIds": ["64fa2e5e2a4d470f8b7f4721"],
+    "qualifications": "MD, Cardiology",
+    "experience": "10 years",
+    "consultationFee": 600,
+    "availability": [
+      {
+        "day": "Monday",
+        "slots": [
+          { "startTime": "09:00", "endTime": "12:00" },
+          { "startTime": "14:00", "endTime": "17:00" }
+        ]
+      },
+      {
+        "day": "Wednesday",
+        "slots": [
+          { "startTime": "09:00", "endTime": "12:00" },
+          { "startTime": "13:00", "endTime": "16:00" }
+        ]
+      }
+    ],
+    "occupiedSlots": [
+      { "date": "2024-09-10", "startTime": "09:00", "endTime": "10:00" },
+      { "date": "2024-09-12", "startTime": "14:00", "endTime": "15:00" }
+    ],
+    "bio": "Dr. Alice Williams is an experienced cardiologist specializing in heart disease and internal medicine.",
+    "rating": 4.7
+  },
+  {
+    "_id": "2",
+    "name": "Dr. Robert Green",
+    "email": "robert.green@example.com",
+    "phoneNumber": 9876543210,
+    "departments": ["Orthopedics"],
+    "hospital": "Orthopedic Care Center",
+    "roomNumber": "405",
+    "appointmentIds": ["64fa2e5e2a4d470f8b7f4722"],
+    "qualifications": "MS, Orthopedics",
+    "experience": "8 years",
+    "consultationFee": 750,
+    "availability": [
+      {
+        "day": "Tuesday",
+        "slots": [
+          { "startTime": "10:00", "endTime": "13:00" },
+          { "startTime": "15:00", "endTime": "18:00" }
+        ]
+      },
+      {
+        "day": "Thursday",
+        "slots": [
+          { "startTime": "11:00", "endTime": "14:00" }
+        ]
+      }
+    ],
+    "occupiedSlots": [
+      { "date": "2024-09-11", "startTime": "15:00", "endTime": "16:00" }
+    ],
+    "bio": "Dr. Robert Green specializes in orthopedic surgery with a focus on sports injuries and joint replacements.",
+    "rating": 4.5
+  },
+  {
+    "_id": "3",
+    "name": "Dr. Emily Carter",
+    "email": "emily.carter@example.com",
+    "phoneNumber": 3344556677,
+    "departments": ["Pediatrics"],
+    "hospital": "Children's Health Clinic",
+    "roomNumber": "212",
+    "appointmentIds": ["64fa2e5e2a4d470f8b7f4723"],
+    "qualifications": "MD, Pediatrics",
+    "experience": "12 years",
+    "consultationFee": 500,
+    "availability": [
+      {
+        "day": "Monday",
+        "slots": [
+          { "startTime": "08:00", "endTime": "12:00" }
+        ]
+      },
+      {
+        "day": "Friday",
+        "slots": [
+          { "startTime": "09:00", "endTime": "13:00" }
+        ]
+      }
+    ],
+    "occupiedSlots": [
+      { "date": "2024-09-09", "startTime": "08:00", "endTime": "09:00" }
+    ],
+    "bio": "Dr. Emily Carter is a pediatrician with extensive experience in child development and pediatric care.",
+    "rating": 4.6
+  },
+  {
+    "_id": "4",
+    "name": "Dr. Michael Johnson",
+    "email": "michael.johnson@example.com",
+    "phoneNumber": 4455667788,
+    "departments": ["Neurology"],
+    "hospital": "NeuroScience Clinic",
+    "roomNumber": "310",
+    "appointmentIds": ["64fa2e5e2a4d470f8b7f4724"],
+    "qualifications": "MD, Neurology",
+    "experience": "20 years",
+    "consultationFee": 850,
+    "availability": [
+      {
+        "day": "Tuesday",
+        "slots": [
+          { "startTime": "09:00", "endTime": "12:00" },
+          { "startTime": "14:00", "endTime": "17:00" }
+        ]
+      },
+      {
+        "day": "Thursday",
+        "slots": [
+          { "startTime": "09:00", "endTime": "11:00" }
+        ]
+      }
+    ],
+    "occupiedSlots": [
+      { "date": "2024-09-12", "startTime": "14:00", "endTime": "15:00" }
+    ],
+    "bio": "Dr. Michael Johnson is a leading neurologist with a focus on treating complex neurological disorders.",
+    "rating": 4.9
+  }
+]

@@ -1,4 +1,6 @@
-import React from 'react'
+"use client";
+
+import React, { useCallback } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -8,9 +10,10 @@ import AppointmentModel from '@/backend/models/appointment'
 import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form'
 import { Trash } from 'lucide-react'
 import { appointmentSchema } from '@/backend/schemas/schema'
-import { formatDateToInput, parseDateFromInput } from '@/lib/utils'
+import { checkAvailableDatesFromToday, formatDateToInput, parseDateFromInput } from '@/lib/utils'
 import Select from '@/components/select'
 import DatePicker from '@/components/date-picker'
+import { Doctor } from '@/backend/models/doctor'
 
 const formSchema = appointmentSchema;
 
@@ -28,6 +31,8 @@ type Props = {
     onCreateDoctor?: (value: string) => void;
     onCreatePatient?: (value: string) => void;
     onCreateDepartment?: (value: string) => void;
+    onSelectDoctor?: (value: string) => void;
+    availableDates?: Date[];
 }
 
 function AppointmentForm(
@@ -42,7 +47,9 @@ function AppointmentForm(
         departmentOptions = [],
         onCreateDoctor,
         onCreatePatient,
-        onCreateDepartment
+        onCreateDepartment,
+        onSelectDoctor,
+        availableDates,
     } : Props
 ) {
 
@@ -61,6 +68,7 @@ function AppointmentForm(
         console.log('delete')
         onDelete?.();
     }
+
   return (
     <div className=''>
         <Form {...form}>
@@ -119,7 +127,10 @@ function AppointmentForm(
                                 options={doctorOptions}
                                 onCreate={onCreateDoctor}
                                 value={field.value}
-                                onChange={field.onChange}
+                                onChange={(value) => {
+                                    field.onChange();
+                                    onSelectDoctor?.(value as string);
+                                }}
                                 disabled={disabled}
                             />
                         </FormControl>
@@ -179,6 +190,7 @@ function AppointmentForm(
                             value={field.value}
                             onChange={field.onChange}
                             disabled={disabled}
+                            disabledDays={(date: Date) => availableDates?.includes(date) || false}
                         />
                     </FormControl>
                     </FormItem>

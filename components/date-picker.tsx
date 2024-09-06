@@ -17,6 +17,7 @@ type Props = {
   value?: Date;
   onChange?: SelectSingleEventHandler;
   disabled?: boolean;
+  disabledDays?: (date: Date) => boolean;
 }
 
 
@@ -25,9 +26,11 @@ function DatePicker(
   {
     value,
     onChange,
-    disabled
+    disabled,
+    disabledDays,
   } : Props
 ) {
+
   return (
     <Popover>
       <PopoverTrigger>
@@ -51,6 +54,7 @@ function DatePicker(
           onSelect={onChange}
           disabled={disabled}
           initialFocus
+          disabledDays={disabledDays}
         />
       </PopoverContent>
     </Popover>

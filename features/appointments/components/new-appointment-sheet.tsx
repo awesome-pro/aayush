@@ -19,6 +19,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Patient } from '@/backend/models/patient';
 import { Department } from '@/backend/models/department';
 import { Doctor } from '@/backend/models/doctor';
+import { checkAvailableDatesFromToday } from '@/lib/utils';
+import { set } from 'mongoose';
 
   
 const formSchema = appointmentSchema;
@@ -33,7 +35,7 @@ function NewCategorySheet() {
     const [patients, setPatients] = React.useState<Patient[]>([]);
     const [departments, setDepartments] = React.useState<Department[]>([]);
     const [doctors, setDoctors] = React.useState<Doctor[]>([]);
-
+    const [availableDates, setAvailableDates] = React.useState<Date[]>([]);
 
     const fetchPatients = useCallback(async () => {
         setLoading(true);
@@ -74,6 +76,7 @@ function NewCategorySheet() {
             setLoading(false);
         }
     },[]);
+
     React.useEffect(() => {
         fetchPatients();
         fetchDepartments();
@@ -99,7 +102,7 @@ function NewCategorySheet() {
 
 
   return (
-    <Sheet open={isOpen || loading} onOpenChange={onClose}>
+    <Sheet open={isOpen} onOpenChange={onClose}>
         <SheetContent className=' overflow-scroll no-scrollbar'>
             <SheetHeader>
             <SheetTitle>New Appointment {loading}</SheetTitle>
@@ -118,17 +121,33 @@ function NewCategorySheet() {
                 console.log('create department');
             }}
             patientOptions={patients.map((patient) => ({
-                label: patient.name + '-' + (patient._id as string),
+                label: patient.name + ' - ' + (patient._id as string),
                 value: (patient._id as string)
             }))}
             doctorOptions={doctors.map((doctor) => ({
-                label: doctor.name + '-' + (doctor._id as string),
+                label: doctor.name + ' - ' + (doctor._id as string),
                 value: (doctor._id as string)
             }))}
             departmentOptions={departments.map((department) => ({
-                label: department.name + '-' + (department._id as string),
+                label: department.name + ' - ' + (department._id as string),
                 value: (department._id as string)
             }))}
+            onSelectDoctor={async (doctorId) => {
+                debugger;
+                setLoading(true);
+                try {
+                    const doctorData = await axios.get(`http://localhost:3000/api/doctors?id=${doctorId}`);
+                    const doctor = doctorData.data.data as Doctor;
+                    console.log('Doctor Data: ', doctor);
+                    const dates = checkAvailableDatesFromToday(doctor);
+                    console.log('Available dates: ', dates);
+                    setAvailableDates(dates);
+                } catch (error) {
+                    console.error('Error fetching doctor: ', error);
+                }finally{
+                    setLoading(false);
+                }
+            }}
             onSubmit={onSubmit}
             disabled={loading}
             defaultValues={{
