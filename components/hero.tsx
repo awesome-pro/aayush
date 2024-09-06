@@ -72,11 +72,11 @@ export default function Home() {
                 </Button>
               </Link>
 
-              <Link href='/consult-ai-doctor'>
+              {/* <Link href='/consult-ai-doctor'>
                 <Button className='rounded-3xl bg-blue-500 hover:bg-blue-600 text-white min-w-48'>
                   Ask AI
                 </Button>
-              </Link>
+              </Link> */}
             </div>
           </div>
 
