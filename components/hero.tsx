@@ -60,11 +60,11 @@ export default function Home() {
             
             {/* Buttons Section */}
             <div className="flex flex-col lg:flex-row justify-center lg:justify-start gap-4 lg:mt-10">
-              <Link href='/appointments'>
+              {/* <Link href='/appointments'>
                 <Button className='bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3'>
                   Manage OPD
                 </Button>
-              </Link>
+              </Link> */}
 
               <Link href='/services'>
                 <Button className='rounded-3xl bg-primary/5 min-w-48' variant={'ghost'}>
