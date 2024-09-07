@@ -6,8 +6,8 @@ import dbConnect from "@/lib/db-connect";
 export async function GET(request: NextRequest) {
     console.log("GET /api/appointments is called");
     const searchParams = new URLSearchParams(request.url);
-
     
+
     await dbConnect();
     try {
         const appointments = await AppointmentModel.find();

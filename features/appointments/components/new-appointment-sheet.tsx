@@ -36,6 +36,7 @@ function NewCategorySheet() {
     const [departments, setDepartments] = React.useState<Department[]>([]);
     const [doctors, setDoctors] = React.useState<Doctor[]>([]);
     const [availableDates, setAvailableDates] = React.useState<Date[]>([]);
+    const [departmentId, setDepartmentId] = React.useState<string>('');
 
     const fetchPatients = useCallback(async () => {
         setLoading(true);
@@ -67,7 +68,7 @@ function NewCategorySheet() {
     const fetchDoctors = useCallback(async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:3000/api/doctors');
+            const response = await axios.get(`http://localhost:3000/api/doctors?department=${departmentId}`);
             console.log('Doctors: ', response.data.data);
             setDoctors(response.data.data);
         } catch (error) {
@@ -132,6 +133,20 @@ function NewCategorySheet() {
                 label: department.name + ' - ' + (department._id as string),
                 value: (department._id as string)
             }))}
+            onSelectDepartment={async (departmentId) => {
+                setLoading(true);
+                setDepartmentId(departmentId);
+                try {
+                    const response = await axios.get(`http://localhost:3000/api/doctors?department=${departmentId}`);
+                    console.log('Doctors by department: ', response.data.data);
+                    setDoctors(response.data.data);
+                } catch (error) {
+                    console.error('Error fetching doctors: ', error);
+                }finally{
+                    setLoading(false);
+                }
+            }}
+            
             onSelectDoctor={async (doctorId) => {
                 debugger;
                 setLoading(true);

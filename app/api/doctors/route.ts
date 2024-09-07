@@ -6,6 +6,7 @@ export async function GET(req: NextRequest) {
     console.log('GET request to doctors');
     const { searchParams } = new URL(req.url, 'http://localhost:3000');
     const id = searchParams.get('id');
+    const departmentId = searchParams.get('department');
 
     try {
         console.log('ID is being processed: ', id);
@@ -20,6 +21,17 @@ export async function GET(req: NextRequest) {
             console.log('Doctor not found');
             return NextResponse.json({ message: "Doctor not found" }, {status: 404});
         }
+
+        if(departmentId) {
+            console.log('Department ID: ', departmentId);
+            const doctors = await DoctorModel.find({ department: departmentId });
+            console.log('Doctors by department: ', doctors);
+            if (doctors) {
+                return NextResponse.json({ data: doctors }, {status: 200});
+            }
+            console.log('No doctors found');
+            return NextResponse.json({ message: "No doctors found" }, {status: 404});
+        }   
 
         if (doctors) {
             return NextResponse.json({ data: doctors }, {status: 200});

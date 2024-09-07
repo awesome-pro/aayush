@@ -31,8 +31,11 @@ type Props = {
     onCreateDoctor?: (value: string) => void;
     onCreatePatient?: (value: string) => void;
     onCreateDepartment?: (value: string) => void;
+    onSelectDepartment?: (value: string) => void;
+    onSelectDate?: (date: Date | null) => void;
     onSelectDoctor?: (value: string) => void;
     availableDates?: Date[];
+    availableTimeSlots?: string[];
 }
 
 function AppointmentForm(
@@ -48,8 +51,10 @@ function AppointmentForm(
         onCreateDoctor,
         onCreatePatient,
         onCreateDepartment,
-        onSelectDoctor,
+        onSelectDoctor, 
+        onSelectDate,
         availableDates,
+        availableTimeSlots
     } : Props
 ) {
 
@@ -68,29 +73,13 @@ function AppointmentForm(
         console.log('delete')
         onDelete?.();
     }
+    const disabledDays = useCallback((date: Date) => availableDates?.includes(date) || false, [availableDates]);
+    console.log(disabledDays)
 
   return (
     <div className=''>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className='space-y-4 mt-4 items-end'>
-            <FormField
-                name='_id'
-                control={form.control}
-                render={({field}) => (
-                    <FormItem>
-                        <FormLabel>
-                           Appointment ID
-                        </FormLabel>
-                        <FormControl>
-                            <Input
-                            disabled={disabled}
-                            placeholder='e.g. Food, Travel...'
-                            {...field}
-                            />
-                        </FormControl>
-                    </FormItem>
-                )}
-             />
                 <div className='md:grid md:grid-cols-2 items-center justify-center gap-6'>
                 <FormField
                 name='patientId'
@@ -113,6 +102,29 @@ function AppointmentForm(
                     </FormItem>
                 )}
                 />
+
+                <FormField
+                name='department'
+                control={form.control}
+                render={({field}) => (
+                    <FormItem>
+                        <FormLabel>
+                           Department
+                        </FormLabel>
+                        <FormControl>
+                            <Select
+                                placeholder='Select a Department'
+                                options={departmentOptions}
+                                onCreate={onCreateDepartment}
+                                value={field.value}
+                                onChange={field.onChange}
+                                disabled={disabled}
+                            />
+                        </FormControl>
+                    </FormItem>
+                )}
+                />
+                
                 <FormField
                  name='doctorId'
                 control={form.control}
@@ -158,28 +170,6 @@ function AppointmentForm(
                 />
 
                 <FormField
-                name='department'
-                control={form.control}
-                render={({field}) => (
-                    <FormItem>
-                        <FormLabel>
-                           Department
-                        </FormLabel>
-                        <FormControl>
-                            <Select
-                                placeholder='Select a Department'
-                                options={departmentOptions}
-                                onCreate={onCreateDepartment}
-                                value={field.value}
-                                onChange={field.onChange}
-                                disabled={disabled}
-                            />
-                        </FormControl>
-                    </FormItem>
-                )}
-                />
-
-                <FormField
                 name='startTime'
                 control={form.control}
                 render={({ field }) => (
@@ -188,7 +178,13 @@ function AppointmentForm(
                     <FormControl>
                         <DatePicker
                             value={field.value}
-                            onChange={field.onChange}
+                            onChange={(date) => {
+                                field.onChange(date);
+                                if(date){
+                                    onSelectDate?.(date);
+                                }
+                            }
+                            }
                             disabled={disabled}
                             disabledDays={(date: Date) => availableDates?.includes(date) || false}
                         />

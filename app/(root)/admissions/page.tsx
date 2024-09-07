@@ -46,7 +46,7 @@ function AdmissionPage() {
   return (
     <div className='max-w-screen-2xl lg:mx-32 mx-3 pb-10 '>
         <Card className='border-none drop-shadow-sm'>
-            <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
+            <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between bg-primary/20'>
                 <CardTitle className='text-xl line-clamp-1'>
                     Admissions Page
                 </CardTitle>

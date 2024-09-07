@@ -90,7 +90,13 @@ export default function Home() {
 
       {/* Specialization Section */}
       <div className="specialization-box py-10 bg-blue-50 text-center">
-        <h2 className="text-4xl font-bold mb-10 text-blue-900">Manage Departments</h2>
+        <span className="flex items-center justify-between p-4 bg-primary/20">
+            <span></span>
+           <h2 className="text-4xl font-bold text-blue-900">Manage Departments</h2>
+           <Button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 md:w-44">
+            View All
+          </Button>
+        </span>
         <div className="flex flex-wrap gap-8 justify-center items-center max-w-screen-xl mx-auto">
           {specialization.slice(0, index).map((specialization, index) => (
             <div key={index} className="flex flex-col items-center">
@@ -115,7 +121,13 @@ export default function Home() {
 
       {/* Medical Specialist Section */}
       <div className="py-10 bg-white text-center">
-        <h2 className="text-3xl font-bold mb-10 text-blue-900">Our Medical Specialist</h2>
+        <span className="flex flex-row items-center justify-between p-5 bg-primary/20">
+          <span></span>
+          <h2 className="text-3xl font-bold text-blue-900">Our Medical Specialist</h2>
+          <Button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 md:w-44">
+            View All
+          </Button>
+        </span>
         <div className="max-w-screen-xl mx-auto">
           <Slider {...settings}>
             {dummyDoctors.map((doctor) => (
