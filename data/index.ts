@@ -13,7 +13,7 @@ export const navLinks: NavLink[] = [
         href: "/medicines",
     },
     {
-        title: "Appointments",
+        title: "Manage OPD",
         href: "/appointments",
     },
     {

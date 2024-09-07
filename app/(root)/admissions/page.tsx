@@ -61,6 +61,7 @@ function AdmissionPage() {
                     Add New
                </Button>
             </CardHeader>
+            <img src='https://plus.unsplash.com/premium_photo-1664475547853-6c8b38ee9e36?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWRtaXNzaW9uJTIwcGF0aWVudHxlbnwwfHwwfHx8MA%3D%3D' alt='Admission' className='w-40 h-32 rounded-3xl ml-5' />
             <CardContent className='lg:px-auto lg:mx-auto -m-4'>
               <div className="container mx-0 py-10">
                 <DataTable 
