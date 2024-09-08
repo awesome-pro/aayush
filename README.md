@@ -1,4 +1,4 @@
-# Aarogya AI
+# Aayush
 
 <img src="public/icons/logo.png" width="150">
 
@@ -15,7 +15,7 @@ Welcome to **Aarogya AI** – your trusted partner in healthcare. Aarogya AI lev
 
 ## Technology Stack
 
-- **Next.js 14:** Our frontend is built using the latest version of Next.js, providing a highly responsive and dynamic user interface.
+- **Next.js 14:** Our front-end is built using the latest version of Next.js, providing a highly responsive and dynamic user interface.
 - **Auth.js v5:** Secure authentication processes are implemented using Auth.js v5, ensuring user data and interactions are protected.
 - **MongoDB:** We use MongoDB for our database management, enabling efficient and secure data handling.
 - **Gemini AI:** The core of our consultation service is powered by Gemini AI, delivering accurate and reliable health advice.
