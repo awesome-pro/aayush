@@ -3,7 +3,7 @@
 <img src="public/icons/logo.png" width="150">
 
 
-Welcome to **Aarogya AI** – your trusted partner in healthcare. Aarogya AI leverages the power of advanced artificial intelligence to provide seamless online consultations and appointment booking. Our application integrates cutting-edge AI chatbots to ensure you receive timely and accurate health advice, right at your fingertips.
+Welcome to **Aayush** – your trusted partner in healthcare. Aayush leverages the power of advanced artificial intelligence to provide seamless online consultations and appointment booking. Our application integrates cutting-edge AI chatbots to ensure you receive timely and accurate health advice, right at your fingertips.
 
 ## Featuresx
 
