@@ -30,8 +30,8 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 215 100% 50%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 225 100% 50%; /* Royal Blue */
+    --primary-foreground: 240 100% 97%; /* Light shade to match Royal Blue */
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
@@ -57,8 +57,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 180 100% 50%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 225 100% 50%; /* Royal Blue */
+    --primary-foreground: 240 100% 97%; /* Light shade to match Royal Blue */
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;

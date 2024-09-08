@@ -63,7 +63,7 @@ export default function Navbar() {
           <SignedOut>
             <Link href="/sign-in">
               <Button size="sm">
-                Get Started
+                Free ESG Score
               </Button>
             </Link>
           </SignedOut>
@@ -87,7 +87,7 @@ export default function Navbar() {
             <SignedOut>
               <Link href="/sign-in">
                 <Button size="sm" className="w-full">
-                  Get Started
+                   Free ESG Score
                 </Button>
               </Link>
             </SignedOut>
